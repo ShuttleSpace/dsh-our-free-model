@@ -31,6 +31,7 @@
     "build:magpie": "node scripts/build-magpie-engine.mjs",
     "typecheck:standalone": "npm --prefix packages/standalone run typecheck",
     "test:standalone-channels": "node scripts/standalone-channels-test.mjs",
+    "pack:magpie": "node scripts/pack-magpie.mjs",
     "test:magpie-host": "node --test magpie/test/*.test.mjs",
     "test": "node scripts/test-all.mjs",
     "test:contributor": "node scripts/test-all.mjs --mode contributor",

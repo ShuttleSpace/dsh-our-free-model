@@ -111,6 +111,17 @@ Magpie 的插件 `options` 通过 `managed` 传入：
 - 没有登记记录的老布局，只有 `settings.json` 同时含 `forwardKey` 和整数
   `standalonePort` 时才视为本插件的数据。
 
+## 打包分发
+
+`npm run pack:magpie` 把插件打包成 `dist/our-free-model-magpie.zip`：从
+`magpie/index.mjs` 与 `magpie/runner.mjs`（外加渠道 Worker）走真实的 import 图，
+只收集合成的 `.mjs/.js`，再补上运行时真正读取的非代码资源——根
+`package.json`、`icon.svg`、`vendor/magpie/engine.json`、渠道包的
+`qoder-auth-wasm.wasm`、`src/providers/registry.json` 以及构建好的控制台
+`packages/standalone/web/`。不包含 DSH 桌面端、`frontend/` 源码、`node_modules`、
+测试、`.git` 以及 65 MB 的引擎二进制（`magpie` 字段默认关闭引擎，引擎按需在
+运行时下载）。Zip 自写、纯 Node、无第三方依赖。
+
 ## 同步上游
 
 ```sh
