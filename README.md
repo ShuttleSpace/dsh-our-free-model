@@ -770,3 +770,19 @@ MIT，见 LICENSE。
     <img alt="dsh-our-free-model 的 GitHub Star 增长趋势" src="https://api.star-history.com/svg?repos=Ebony-Vinyl/dsh-our-free-model&amp;type=Date" />
   </picture>
 </a>
+
+## Magpie 宿主插件（`magpie` 分支）
+
+`magpie` 分支让本仓库也能作为 Magpie 插件安装：Magpie 通过 `exports["./server"]`
+加载 `magpie/index.mjs`，在 Bun 宿主里启动一个 Node 子进程运行本仓库的独立服务，
+再把目录里的模型发布给 Agent。`main` 分支不受影响，后续同步上游只需合并 `main`。
+
+```sh
+git clone --branch magpie https://github.com/Ebony-Vinyl/dsh-our-free-model.git
+magpie plugin add ./dsh-our-free-model
+```
+
+安装后在 **供应商 → Our Free Model** 打开本机管理控制台，完成 EAC 或渠道登录，
+再回 Magpie 刷新模型。数据目录默认是 `<Magpie 配置目录>/our-free-model`，与 DSH 的
+`~/.our-free-model` 分开。远程控制台、兼容供应商与卸载清理尚未迁移，细节、选项和
+同步流程见 [`docs/magpie-host.md`](docs/magpie-host.md)。

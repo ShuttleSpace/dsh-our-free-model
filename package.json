@@ -15,6 +15,7 @@
   "main": "./index.js",
   "exports": {
     ".": "./index.js",
+    "./server": "./magpie/index.mjs",
     "./client": "./client.js",
     "./package.json": "./package.json",
     "./locale/*.json": "./locale/*.json"
@@ -30,6 +31,7 @@
     "build:magpie": "node scripts/build-magpie-engine.mjs",
     "typecheck:standalone": "npm --prefix packages/standalone run typecheck",
     "test:standalone-channels": "node scripts/standalone-channels-test.mjs",
+    "test:magpie-host": "node --test magpie/test/*.test.mjs",
     "test": "node scripts/test-all.mjs",
     "test:contributor": "node scripts/test-all.mjs --mode contributor",
     "test:release": "node scripts/test-all.mjs --mode release",
@@ -43,6 +45,7 @@
   "files": [
     "index.js",
     "client.js",
+    "magpie",
     "adapter",
     "src/adapter.js",
     "src/aggregate.js",
@@ -126,6 +129,10 @@
       "immediately": true,
       "inject": []
     }
+  },
+  "magpie": {
+    "icon": "https://raw.githubusercontent.com/Ebony-Vinyl/dsh-our-free-model/magpie/icon.svg",
+    "maxConcurrency": 2
   },
   "license": "MIT",
   "peerDependencies": {
