@@ -784,5 +784,6 @@ magpie plugin add ./dsh-our-free-model
 
 安装后在 **供应商 → Our Free Model** 打开本机管理控制台，完成 EAC 或渠道登录，
 再回 Magpie 刷新模型。数据目录默认是 `<Magpie 配置目录>/our-free-model`，与 DSH 的
-`~/.our-free-model` 分开。远程控制台、兼容供应商与卸载清理尚未迁移，细节、选项和
+`~/.our-free-model` 分开；卸载时会按登记清理本插件写入的数据和 `our-free-model`
+账号，保留目录里的其他文件。远程控制台与兼容供应商尚未迁移，细节、选项和
 同步流程见 [`docs/magpie-host.md`](docs/magpie-host.md)。

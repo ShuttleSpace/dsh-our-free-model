@@ -12,10 +12,10 @@ import { spawn } from 'node:child_process'
 import { createInterface } from 'node:readline'
 import { fileURLToPath } from 'node:url'
 import { resolveNodeRuntime } from './node.mjs'
+import { registerInstallation, validateDataDir, withInstallationLock } from './installation-state.mjs'
 
 const instances = new Map()
 const runner = fileURLToPath(new URL('./runner.mjs', import.meta.url))
-const packageDir = fileURLToPath(new URL('../', import.meta.url))
 const START_TIMEOUT = 45000
 
 const environment = () => {
@@ -26,14 +26,6 @@ const environment = () => {
   delete env.DSH_HOME
   delete env.OFM_HOME
   return env
-}
-
-export function validateDataDir(dataDir, directory) {
-  for (const protectedDir of [path.parse(dataDir).root, os.homedir(), path.resolve(directory), packageDir]) {
-    if (protectedDir === dataDir || protectedDir.startsWith(dataDir + path.sep)) {
-      throw new Error('managed.dataDir 必须是本插件专用的子目录，不能是系统根目录、主目录、Magpie 配置目录或源码目录')
-    }
-  }
 }
 
 export function getManagedRuntime(input = {}, options = {}) {
@@ -87,63 +79,66 @@ export function getManagedRuntime(input = {}, options = {}) {
       if (pending) return pending
       pending = (async () => {
         if (disposed) throw new Error('本插件正在卸载，不能重新启动服务')
-        const node = await resolveNodeRuntime(options, dataDir, environment())
-        const processHandle = spawn(node, [runner], {
-          env: environment(),
-          stdio: ['pipe', 'pipe', 'ignore'],
-          windowsHide: true,
-        })
-        child = processHandle
-        processHandle.stdin.on('error', () => {})
-        const exit = new Promise(resolve => processHandle.once('exit', resolve))
-        processHandle.once('exit', () => {
-          if (child === processHandle) state = undefined
-          for (const call of calls.values()) call.reject(new Error('内置服务已退出'))
-          calls.clear()
-        })
-        runtime.exited = exit
-        const ready = await new Promise((resolve, reject) => {
-          const lines = createInterface({ input: processHandle.stdout })
-          const timer = setTimeout(() => {
-            processHandle.kill('SIGKILL')
-            finish(new Error('内置服务启动超时'))
-          }, START_TIMEOUT)
-          const finish = (error, value) => {
-            clearTimeout(timer)
-            if (error) lines.close()
-            processHandle.off('error', onError)
-            processHandle.off('exit', onExit)
-            if (error) { processHandle.stdin.end(); reject(error) } else resolve(value)
-          }
-          const onError = () => finish(new Error('无法启动 Node 内置服务'))
-          const onExit = () => finish(new Error('内置服务在启动时退出'))
-          processHandle.once('error', onError)
-          processHandle.once('exit', onExit)
-          lines.on('line', line => {
-            try {
-              const reply = JSON.parse(line)
-              if (reply.type === 'ready') finish(null, reply)
-              if (reply.type === 'error') finish(new Error(reply.message))
-              if (reply.id && calls.has(reply.id)) {
-                const call = calls.get(reply.id)
-                calls.delete(reply.id)
-                if (reply.error) call.reject(new Error(reply.error))
-                else call.resolve(reply.value)
-              }
-            } catch { finish(new Error('内置服务返回了无效启动信息')) }
+        await registerInstallation(directory, dataDir)
+        return withInstallationLock(dataDir, async () => {
+          const node = await resolveNodeRuntime(options, dataDir, environment())
+          const processHandle = spawn(node, [runner], {
+            env: environment(),
+            stdio: ['pipe', 'pipe', 'ignore'],
+            windowsHide: true,
           })
-          processHandle.stdin.write(`${JSON.stringify({
-            dataDir,
-            port,
-            refresh: options.refresh !== false,
-            parentPid: process.pid,
-          })}\n`)
+          child = processHandle
+          processHandle.stdin.on('error', () => {})
+          const exit = new Promise(resolve => processHandle.once('exit', resolve))
+          processHandle.once('exit', () => {
+            if (child === processHandle) state = undefined
+            for (const call of calls.values()) call.reject(new Error('内置服务已退出'))
+            calls.clear()
+          })
+          runtime.exited = exit
+          const ready = await new Promise((resolve, reject) => {
+            const lines = createInterface({ input: processHandle.stdout })
+            const timer = setTimeout(() => {
+              processHandle.kill('SIGKILL')
+              finish(new Error('内置服务启动超时'))
+            }, START_TIMEOUT)
+            const finish = (error, value) => {
+              clearTimeout(timer)
+              if (error) lines.close()
+              processHandle.off('error', onError)
+              processHandle.off('exit', onExit)
+              if (error) { processHandle.stdin.end(); reject(error) } else resolve(value)
+            }
+            const onError = () => finish(new Error('无法启动 Node 内置服务'))
+            const onExit = () => finish(new Error('内置服务在启动时退出'))
+            processHandle.once('error', onError)
+            processHandle.once('exit', onExit)
+            lines.on('line', line => {
+              try {
+                const reply = JSON.parse(line)
+                if (reply.type === 'ready') finish(null, reply)
+                if (reply.type === 'error') finish(new Error(reply.message))
+                if (reply.id && calls.has(reply.id)) {
+                  const call = calls.get(reply.id)
+                  calls.delete(reply.id)
+                  if (reply.error) call.reject(new Error(reply.error))
+                  else call.resolve(reply.value)
+                }
+              } catch { finish(new Error('内置服务返回了无效启动信息')) }
+            })
+            processHandle.stdin.write(`${JSON.stringify({
+              dataDir,
+              port,
+              refresh: options.refresh !== false,
+              parentPid: process.pid,
+            })}\n`)
+          })
+          state = ready
+          processHandle.unref()
+          processHandle.stdin.unref?.()
+          processHandle.stdout.unref?.()
+          return state
         })
-        state = ready
-        processHandle.unref()
-        processHandle.stdin.unref?.()
-        processHandle.stdout.unref?.()
-        return state
       })().finally(() => { pending = undefined })
       return pending
     },

@@ -85,6 +85,9 @@ test('plugin starts the service, opens the console and refuses unknown models', 
   const models = await hooks.provider.models({ models: {} }, { auth })
   assert.equal(typeof models, 'object')
   assert.equal(models[Symbol.for('magpie.fellBack')], undefined)
+  // Starting the service registers ownership so Magpie's uninstall can find it.
+  assert.ok(fs.existsSync(path.join(dataDir, '.dsh-ofm-magpie-owner.json')))
+  assert.ok(fs.existsSync(path.join(scratch, 'dsh-our-free-model-magpie-owned.json')))
 
   const loader = await hooks.auth.loader(async () => auth)
   assert.match(loader.baseURL, /^http:\/\/127\.0\.0\.1:\d+\/v1$/)

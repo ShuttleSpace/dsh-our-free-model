@@ -132,7 +132,8 @@
   },
   "magpie": {
     "icon": "https://raw.githubusercontent.com/Ebony-Vinyl/dsh-our-free-model/magpie/icon.svg",
-    "maxConcurrency": 2
+    "maxConcurrency": 2,
+    "uninstall": "./magpie/uninstall.mjs"
   },
   "license": "MIT",
   "peerDependencies": {
