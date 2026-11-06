@@ -6,6 +6,7 @@ import http from 'node:http'
 import net from 'node:net'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { restrictPermissions } from './open-external.js'
 import { loopbackFetch } from './loopback-fetch.js'
 import { hasEnginePayload, materializeEngine } from './engine-payload.js'
 import {
@@ -225,7 +226,15 @@ async function ownerLease(home) {
         throw engineError('Engine owner lock has an unsupported format')
       }
       let lease
-      try { lease = await bindLease(saved.port) } catch {
+      try { lease = await bindLease(saved.port) } catch (error) {
+        if (error?.code === 'EACCES' || error?.code === 'EPERM') {
+          // Windows reserves whole port ranges (winnat/Hyper-V/WSL) that drift
+          // across reboots. A saved lease port inside one is unusable on this
+          // boot, not owned: only a live listener reports EADDRINUSE. Drop the
+          // stale record and take a fresh lease instead of failing startup (#688).
+          await unlink(file).catch(() => {})
+          continue
+        }
         throw engineError('Magpie data directory already has an owner or its lease port is occupied')
       }
       try {
@@ -239,6 +248,7 @@ async function ownerLease(home) {
       await writeFile(temp, JSON.stringify({
         version: 1, port: lease.address().port, pid: process.pid, token: randomBytes(16).toString('hex'),
       }), { mode: 0o600, flag: 'wx' })
+      restrictPermissions(temp)
       // Atomic publication never overwrites another owner's lease record.
       await link(temp, file)
       return lease
@@ -261,6 +271,7 @@ async function writeJSON(file, value) {
   const temp = `${file}.${randomBytes(6).toString('hex')}.tmp`
   try {
     await writeFile(temp, `${JSON.stringify(value, null, 2)}\n`, { mode: 0o600, flag: 'wx' })
+    restrictPermissions(temp)
     await rename(temp, file)
   } finally { await unlink(temp).catch(() => {}) }
 }
@@ -389,6 +400,11 @@ const engineAppearanceCSS = `
 :root[data-ofm-engine] #addSheet > .row-head { height:auto; min-height:32px; gap:8px; }
 :root[data-ofm-engine] #addSheet .find { height:32px; }
 :root[data-ofm-engine] #addSheet .kind { padding-top:16px; }
+/* Upstream's "Compact at" row (#876) shrinks and wraps inside the agent prefs,
+   but the settings lists kept it flex:none: at a narrow panel width the fixed
+   76px number input sticks past the clipped list and loses half its width.
+   The same shrink-and-wrap answer, for the rows upstream missed. */
+:root[data-ofm-engine] .row.pref .compact-at { flex:0 1 auto; min-width:0; flex-wrap:wrap; row-gap:6px; }
 :root[data-ofm-engine-theme] {
   --ofm-bg:#f4f4f6; --ofm-card:#fff; --ofm-fg:#1c1c21; --ofm-quiet:#63636b;
   --ofm-muted:#85858d; --ofm-line:#e3e3e8; --ofm-accent:#4f46e5;
@@ -718,11 +734,15 @@ export function createMagpieEngine({ dataDir, logger, binary } = {}) {
         throw engineError('Saved engine gateway port is invalid')
       }
       if (gatewayPort !== undefined) {
-        let reservation
-        try { reservation = await bindLease(gatewayPort) } catch {
-          throw engineError('Saved engine gateway port is occupied; close the conflicting listener before restarting')
+        try {
+          const reservation = await bindLease(gatewayPort)
+          await closeLease(reservation)
+        } catch {
+          // The saved port is a preference, not a requirement: another listener
+          // or a Windows reserved range that drifted across reboots (#688) must
+          // not block startup. Take a fresh port; it is persisted right below.
+          gatewayPort = await freePort()
         }
-        await closeLease(reservation)
       } else gatewayPort = await freePort()
       let webPort = await freePort()
       while (webPort === gatewayPort) webPort = await freePort()

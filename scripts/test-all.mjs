@@ -31,10 +31,14 @@ if (!['all', 'contributor', 'release'].includes(options.mode)) {
   process.exit(1)
 }
 const { mode, only } = options
-const releaseSuites = new Set(['manifest', 'release', 'catalog', 'legacy-upgrade', 'engine-payload'])
+const releaseSuites = new Set(['manifest', 'legacy-payload', 'release', 'catalog', 'legacy-upgrade', 'engine-payload'])
 
 const suites = [
   ['manifest', 'build-manifest.mjs', ['--check']],
+  // The shipped bundles (token-saver, o2a, core) and the engine parts must
+  // match their sources; a stale src/o2a.js would make every suite below test
+  // yesterday's shaping while src/o2a/ already looks updated.
+  ['legacy-payload', 'build-legacy-payload.mjs', ['--check']],
   ['release', 'release-e2e.mjs', []],
   ['legacy-upgrade', 'legacy-upgrade-test.mjs', mode === 'contributor' ? [] : ['--production']],
   ['engine-payload', 'engine-payload-test.mjs', []],
@@ -54,6 +58,7 @@ const suites = [
   ['reload', 'reload-test.mjs', []],
   ['forward', 'forward-test.mjs', []],
   ['gemini-gateway', 'gemini-gateway-test.mjs', []],
+  ['private-file', 'private-file-permissions-test.mjs', []],
   ['subscriptions', 'subscriptions-test.mjs', []],
   ['subscription-completion', 'subscription-completion-test.mjs', []],
   ['subscription-wiring', 'subscription-wiring-test.mjs', []],
@@ -71,6 +76,7 @@ const suites = [
   ['chan-relay', 'chan-relay-test.mjs', []],
   ['channel-pack', 'channel-pack-test.mjs', []],
   ['channel-pack-gate', 'channel-pack-gate-test.mjs', []],
+  ['auto-checkin-tick', 'auto-checkin-tick-test.mjs', []],
   ['channel-source', 'channel-pack-test.mjs', ['--source', '--channels-only']],
   ['channel-network', 'channel-network-test.mjs', []],
   ['channel-credits-rpc', 'channel-credits-rpc-test.mjs', []],
@@ -103,6 +109,7 @@ const suites = [
   ['effort', 'effort-test.mjs', []],
   ['projection', 'projection-test.mjs', []],
   ['fingerprint', 'fingerprint-test.mjs', []],
+  ['wire-tool-alias', 'wire-tool-alias-test.mjs', []],
   ['opencode-parity', 'opencode-parity-test.mjs', []],
   ['free-lane-wire', 'free-lane-wire-test.mjs', []],
   ['freetier-gate', 'freetier-gate-test.mjs', []],
