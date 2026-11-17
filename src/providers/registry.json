@@ -133,6 +133,60 @@
     "source": "fcc"
   },
   {
+    "id": "antling",
+    "name": "Ant Ling",
+    "category": "apikey",
+    "auth": {
+      "kind": "apiKey",
+      "env": "ANTLING_API_KEY",
+      "url": "https://developer.ant-ling.com/zh-CN/docs/getting-started/quickstart/"
+    },
+    "baseUrl": "https://api.ant-ling.com/v1",
+    "format": "openai-chat",
+    "models": [
+      {
+        "id": "Ling-3.2-flash",
+        "name": "Ling 3.2 Flash",
+        "contextWindow": null,
+        "vision": true,
+        "reasoning": null
+      },
+      {
+        "id": "Ling-3.1-flash",
+        "name": "Ling 3.1 Flash",
+        "contextWindow": null,
+        "vision": null,
+        "reasoning": null
+      },
+      {
+        "id": "Ling-3.0-flash-VL",
+        "name": "Ling 3.0 Flash VL",
+        "contextWindow": null,
+        "vision": true,
+        "reasoning": null
+      },
+      {
+        "id": "Ling-3.0-flash",
+        "name": "Ling 3.0 Flash",
+        "contextWindow": null,
+        "vision": null,
+        "reasoning": null
+      },
+      {
+        "id": "Ling-3.0-tiny",
+        "name": "Ling 3.0 Tiny",
+        "contextWindow": null,
+        "vision": null,
+        "reasoning": null
+      }
+    ],
+    "notes": "Ant Ling (Ant Group) OpenAI-compatible chat completions. New-account voucher and the monthly Token coupon apply to API usage; Ling-3.2-flash is free for a limited launch window. Model ids from the official model family docs.",
+    "website": "https://developer.ant-ling.com/",
+    "local": false,
+    "source": "custom",
+    "modelsUrl": "https://api.ant-ling.com/v1/models"
+  },
+  {
     "id": "azure_openai",
     "name": "Azure OpenAI",
     "category": "apikey",
@@ -599,6 +653,31 @@
     "local": false,
     "source": "fcc",
     "modelsUrl": "https://api.deepseek.com/models"
+  },
+  {
+    "id": "edgeone_makers",
+    "name": "EdgeOne Makers",
+    "category": "apikey",
+    "auth": {
+      "kind": "apiKey",
+      "env": "EDGEONE_MAKERS_API_KEY",
+      "url": "https://console.tencentcloud.com/edgeone/makers?tab=models&subTab=apikey"
+    },
+    "baseUrl": "https://ai-gateway.edgeone.link/v1",
+    "format": "openai-chat",
+    "models": [
+      {
+        "id": "@makers/deepseek-v4-flash",
+        "name": "DeepSeek V4 Flash (Makers)",
+        "contextWindow": null,
+        "vision": null,
+        "reasoning": null
+      }
+    ],
+    "notes": "Makers Models unified edge gateway; built-in models need no vendor key and the free tier shares 500k tokens per account per month. No public model-listing endpoint is documented, so the picker uses the documented built-in id; Discover/override can extend it.",
+    "website": "https://pages.edgeone.ai/",
+    "local": false,
+    "source": "custom"
   },
   {
     "id": "experiential",
@@ -2292,6 +2371,46 @@
     "modelsUrl": "https://api.scaleway.ai/v1/models"
   },
   {
+    "id": "scnet",
+    "name": "SCNet",
+    "category": "apikey",
+    "auth": {
+      "kind": "apiKey",
+      "env": "SCNET_API_KEY",
+      "url": "https://www.scnet.cn/help/docs/mainsite/mass/tutorial/apikeymgt.html"
+    },
+    "baseUrl": "https://api.scnet.cn/api/llm/v1",
+    "format": "openai-chat",
+    "models": [
+      {
+        "id": "GLM-5.3-Flash",
+        "name": "GLM 5.3 Flash",
+        "contextWindow": null,
+        "vision": null,
+        "reasoning": null
+      },
+      {
+        "id": "DeepSeek-V4.1-Flash-1017",
+        "name": "DeepSeek V4.1 Flash 1017",
+        "contextWindow": null,
+        "vision": null,
+        "reasoning": null
+      },
+      {
+        "id": "DeepSeek-R1-Distill-Qwen-7B",
+        "name": "DeepSeek R1 Distill Qwen 7B",
+        "contextWindow": null,
+        "vision": null,
+        "reasoning": null
+      }
+    ],
+    "notes": "SCNet (National Supercomputing Internet) MaaS; OpenAI-compatible /chat/completions and /models. New-user free token packages are claimed in the SCNet client and then spent through this API; real-name account required.",
+    "website": "https://www.scnet.cn/",
+    "local": false,
+    "source": "custom",
+    "modelsUrl": "https://api.scnet.cn/api/llm/v1/models"
+  },
+  {
     "id": "siliconflow",
     "name": "SiliconFlow",
     "category": "apikey",
@@ -2428,6 +2547,60 @@
     "local": false,
     "source": "fcc",
     "modelsUrl": "https://api.siliconflow.com/v1/models"
+  },
+  {
+    "id": "telnyx",
+    "name": "Telnyx Inference",
+    "category": "apikey",
+    "auth": {
+      "kind": "apiKey",
+      "env": "TELNYX_API_KEY",
+      "url": "https://developers.telnyx.com/docs/inference"
+    },
+    "baseUrl": "https://api.telnyx.com/v2/ai/openai",
+    "format": "openai-chat",
+    "models": [
+      {
+        "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+        "name": "DeepSeek V4.1 Flash 1017",
+        "contextWindow": null,
+        "vision": null,
+        "reasoning": null
+      },
+      {
+        "id": "moonshotai/Kimi-K3.1-Pro",
+        "name": "Kimi K3.1 Pro",
+        "contextWindow": null,
+        "vision": true,
+        "reasoning": null
+      },
+      {
+        "id": "zai-org/GLM-5.3-Flash",
+        "name": "GLM 5.3 Flash",
+        "contextWindow": null,
+        "vision": null,
+        "reasoning": null
+      },
+      {
+        "id": "Qwen/Qwen3.8-27B",
+        "name": "Qwen 3.8 27B",
+        "contextWindow": null,
+        "vision": null,
+        "reasoning": null
+      },
+      {
+        "id": "openai/gpt-oss-120b",
+        "name": "GPT-OSS 120B",
+        "contextWindow": 131072,
+        "vision": null,
+        "reasoning": true
+      }
+    ],
+    "notes": "Telnyx Inference OpenAI-compatible chat endpoint. The $25 pre-trial credit covers Inference models and is shared with other Telnyx AI products; model ids from the official Inference catalog.",
+    "website": "https://www.telnyx.com/",
+    "local": false,
+    "source": "custom",
+    "modelsUrl": "https://api.telnyx.com/v2/ai/openai/models"
   },
   {
     "id": "tencent",

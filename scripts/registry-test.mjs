@@ -49,9 +49,9 @@ const raw = fs.readFileSync(path.join(repo, 'src/providers/registry.json'), 'utf
 // The `free` category is empty on purpose: OpenCode's keyless pool needs a
 // per-request fingerprint the aggregate transport cannot carry, so it is not a
 // row here (see README's aggregate section) — the free lane serves it instead.
-const EXPECTED_PROVIDERS = 76
-const EXPECTED_BY_CATEGORY = { apikey: 61, 'free-tier': 10, local: 3, oauth: 2 }
-const EXPECTED_MODELS = 507
+const EXPECTED_PROVIDERS = 80
+const EXPECTED_BY_CATEGORY = { apikey: 65, 'free-tier': 10, local: 3, oauth: 2 }
+const EXPECTED_MODELS = 521
 const FLEETRELAY_MODELS = ['deepseek-v4.1-flash-free', 'gpt-6-astra']
 
 const byCategory = {}
@@ -266,6 +266,27 @@ check('the FleetRelay gateway exposes only its live public model catalog', () =>
   assert.deepEqual(provider.models.map(model => model.id), FLEETRELAY_MODELS)
   assert.equal(chatEndpoint(provider), 'https://vpn2.asigo.top:8443/v1/responses')
   assert.equal(modelsEndpoint(provider), 'https://vpn2.asigo.top:8443/v1/models')
+})
+
+check('the four free-token lanes are wired to their documented endpoints', () => {
+  const expected = {
+    antling: ['https://api.ant-ling.com/v1', 'https://api.ant-ling.com/v1/models'],
+    edgeone_makers: ['https://ai-gateway.edgeone.link/v1', null],
+    scnet: ['https://api.scnet.cn/api/llm/v1', 'https://api.scnet.cn/api/llm/v1/models'],
+    telnyx: ['https://api.telnyx.com/v2/ai/openai', 'https://api.telnyx.com/v2/ai/openai/models'],
+  }
+  for (const [id, [baseUrl, modelsUrl]] of Object.entries(expected)) {
+    const provider = getProvider(id)
+    assert.ok(provider, `${id} is missing`)
+    assert.equal(provider.category, 'apikey')
+    assert.equal(provider.auth.kind, 'apiKey')
+    assert.equal(provider.format, 'openai-chat')
+    assert.equal(provider.source, 'custom')
+    assert.equal(provider.baseUrl, baseUrl)
+    assert.equal(modelsEndpoint(provider), modelsUrl)
+    assert.equal(chatEndpoint(provider), `${baseUrl}/chat/completions`)
+    assert.ok(provider.models.length > 0, `${id}: no models`)
+  }
 })
 
 check('the unapproved 0d relay is not directly configurable in OurFreeModel', () => {
