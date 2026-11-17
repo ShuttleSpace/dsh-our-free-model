@@ -56,6 +56,7 @@ const suites = [
   ['updater', 'updater-test.mjs', []],
   ['upgrade-ui', 'upgrade-ui-test.mjs', []],
   ['reload', 'reload-test.mjs', []],
+  ['reload-notice', 'reload-notice-test.mjs', []],
   ['forward', 'forward-test.mjs', []],
   ['gemini-gateway', 'gemini-gateway-test.mjs', []],
   ['private-file', 'private-file-permissions-test.mjs', []],
@@ -101,6 +102,11 @@ const suites = [
   ['standalone-settings-host', 'standalone-settings-host-test.mjs', []],
   ['standalone-login-terminal', 'standalone-login-terminal-test.mjs', []],
   ['standalone-package', 'standalone-package-test.mjs', ['--sources-only']],
+  ['feedback-server', 'feedback-server-test.mjs', []],
+  ['feedback-proxy', 'feedback-proxy-test.mjs', []],
+  ['feedback-e2e', 'feedback-e2e-test.mjs', []],
+  ['feedback-plugin', 'feedback-plugin-test.mjs', []],
+  ['feedback-plugin-ui', 'feedback-plugin-ui-test.mjs', []],
   ['bun-fetch', 'bun-fetch-test.mjs', []],
   ['free-lane-compat', 'free-lane-compat-test.mjs', []],
   ['stable-session', 'stable-session-test.mjs', []],
@@ -113,6 +119,10 @@ const suites = [
   ['opencode-parity', 'opencode-parity-test.mjs', []],
   ['free-lane-wire', 'free-lane-wire-test.mjs', []],
   ['freetier-gate', 'freetier-gate-test.mjs', []],
+  ['free-lane-quota', 'free-lane-quota-test.mjs', []],
+  ['extensions', 'extensions-test.mjs', []],
+  ['plugins', 'plugins-test.mjs', []],
+  ['plugins-ui', 'plugins-ui-test.mjs', []],
   ['sniff', 'sniff-test.mjs', []],
   ['stream-failure', 'stream-failure-test.mjs', []],
   ['truncation', 'truncation-test.mjs', []],
@@ -171,7 +181,7 @@ if (only !== null && suites.length === 0) {
  * detail" because buffered child output was unavailable. The deadline is well
  * above the slowest suite, and live output now identifies the last check seen.
  */
-const SUITE_TIMEOUT_MS = 60_000
+const SUITE_TIMEOUT_MS = 120_000
 
 /**
  * Run a suite while forwarding its output as it arrives. Keeping the output

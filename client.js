@@ -80,6 +80,20 @@ window.__ModuleLoader__.load({
         'tag.context': '上下文',
         'tag.output': '最长输出',
         'tag.latency': '首字',
+        'perf.more': '详情',
+        'perf.less': '收起',
+        'perf.rate': '状态',
+        'perf.rateTitle': '成功率排除业务拒绝，统计包含当前尚未结束的小时。',
+        'perf.barsTitle': '近期成功率采样；灰色条表示暂无数据。',
+        'perf.latency': '延迟',
+        'perf.speed': '吞吐',
+        'perf.windowNote': '最近 {h} 小时的性能指标，来自本站统计。',
+        'perf.latencyTrend': '延迟趋势（最近 24 小时）',
+        'perf.latencySub': '平均 Token 延迟',
+        'perf.rateTrend': '可用率（最近 24 小时）',
+        'perf.rateSub': '成功率排除业务拒绝，统计包含当前尚未结束的小时。',
+        'perf.loading': '正在读取性能数据…',
+        'perf.noSeries': '本站暂无该模型的逐小时数据。',
         'tag.eacChannel': 'EAC 渠道 · 协付',
         'tag.new': 'NEW',
         'tag.newTitle': '新上线的模型，经 EAC 渠道转发自 OpenCode 免费车道。',
@@ -305,6 +319,7 @@ window.__ModuleLoader__.load({
         'news.osDenied': '浏览器拒绝了通知权限；需要在系统/浏览器设置里手动恢复。',
         'news.link': '查看详情',
         'news.urgentTitle': '重要公告',
+        'news.holdHint': '为确保读完，{s} 秒后可关闭',
         'news.gotIt': '知道了',
         'news.lastFetch': '最近拉取',
         'news.fetchFailed': '公告源暂不可达（显示的是缓存）',
@@ -357,6 +372,36 @@ window.__ModuleLoader__.load({
         'picks.title': '推荐项目',
         'picks.sub': '同一作者的一组开源项目：把 Agent 装进原生桌面、让上百个插件和谐共存、把视频和设计留在这台机器上。用得上，就顺手点个 Star。',
         'picks.foot': 'Star 是开源项目唯一的「工资条」——它决定作者还能投入多少时间。这里的项目都免费、开源、无广告，点一下就是最实在的支持。',
+        // ── 反馈与许愿 ────────────────────────────────────────────────────────
+        'nav.tab.feedback': '反馈与许愿',
+        'fb.title': '反馈与许愿',
+        'fb.sub': '报告一个问题，或告诉我们你想要什么功能',
+        'fb.signIn': '使用 GitHub 登录',
+        'fb.signOut': '退出 {login}',
+        'fb.gateTitle': '先登录再提交',
+        'fb.gateBody': '登录只用来确认这条反馈来自谁，方便我们在修好后回来找你。只索取 GitHub 的公开身份，不请求任何仓库权限，也不会发布到公开的 issue 列表。',
+        'fb.code': '在 GitHub 页面输入这串验证码',
+        'fb.openVerify': '打开 github.com/login/device',
+        'fb.waiting': '正在等待授权完成…',
+        'fb.opened': '已打开 GitHub 授权页。输入上面的验证码后回到这里。',
+        'fb.signedIn': '已登录 GitHub，可以提交反馈了。',
+        'fb.signedOut': '已退出反馈登录。',
+        'fb.kind.bug': '报告问题',
+        'fb.kind.wish': '功能许愿',
+        'fb.titleField': '标题',
+        'fb.titlePlaceholderBug': '一句话说明出了什么问题',
+        'fb.titlePlaceholderWish': '一句话说明你希望有什么',
+        'fb.detailField': '详细描述',
+        'fb.detailPlaceholderBug': '复现步骤、你期望的结果、实际发生了什么。有报错原文请一并贴上。',
+        'fb.detailPlaceholderWish': '你现在的做法是什么、卡在哪里、希望这个功能怎么用。',
+        'fb.submit': '提交反馈',
+        'fb.sent': '已提交，单号 {id}',
+        'fb.submitted': '反馈已提交，谢谢。',
+        'fb.expired': '验证码已过期，请重新发起登录。',
+        'fb.denied': 'GitHub 授权未完成。',
+        'fb.stale': '反馈登录已失效，请重新用 GitHub 登录后再次提交（正文已保留）。',
+        'fb.version': '版本',
+        'fb.note': '提交的内容会带上你的插件版本与操作系统，方便定位问题。除此之外不会读取本机的任何数据。',
         'picks.stars': 'Stars',
         'picks.forks': 'Forks',
         'picks.fork': 'Fork',
@@ -392,6 +437,103 @@ window.__ModuleLoader__.load({
         'picks.design.tag4': '真实文件导出',
         'free.title': '免费模型',
         'free.sub': '匿名免费与 Kilo 模型统一展示：水位表示可选比例，实测状态单独显示。',
+        'nav.tab.extensions': 'OFM 渠道扩展',
+        'ext.search': '搜索扩展',
+        'ext.all': '全部',
+        'ext.title': 'OFM 渠道扩展',
+        'ext.bunMissing': 'Bun 未安装',
+        'ext.changelog': '更新内容',
+        'ext.viewSource': '查看源码',
+        'ext.indexFresh': '签名索引生成于 {at}',
+        'ext.bunHint': 'OpenCode 免费车道推理需要本机 Bun：安装 Bun（bun.sh 或 npm i -g bun）后重启，或把可执行文件路径写入 OUR_FREE_MODEL_BUN。',
+        'ext.sub': '渠道与增强模块的市场：签名索引、沙箱运行、与本体解耦；装一个渠道，模型立即出现在免费页。',
+        'ext.tabDiscover': '发现',
+        'ext.tabInstalled': '已安装',
+        'ext.tabSecurity': '安全',
+        'ext.install': '安装',
+        'ext.installing': '安装中…',
+        'ext.installed': '已安装',
+        'ext.update': '更新',
+        'ext.updateAvailable': '有更新',
+        'ext.enable': '启用',
+        'ext.disable': '停用',
+        'ext.uninstall': '卸载',
+        'ext.channel': '渠道',
+        'ext.enhancement': '增强',
+        'ext.verified': '已签名',
+        'ext.verifiedTitle': '该扩展来自 Ed25519 签名的官方索引',
+        'ext.refresh': '刷新索引',
+        'ext.empty': '扩展索引不可达',
+        'ext.indexHint': '索引可能仍在预热或被网络拦截；点右上角「刷新索引」重试。',
+        'ext.failed': '操作失败',
+        'ext.security': '安全模型',
+        'ext.securityBody': '扩展是可执行代码——只安装这份签名索引里的扩展。安装时会校验 Ed25519 签名与 SHA-256 摘要，做静态扫描（拒绝 node:*、process、eval、动态 import 与压缩产物）；运行在独立 Worker 的 VM 沙箱里，唯一的 import 是受控的 ofm:sdk；网络只能访问 manifest 里声明过的域名，密钥只进不出，每个 hook 都有超时熔断。',
+        'ext.securityBody2': '这套防御针对的是意外与草率，不是蓄意作者——真正的门是签名、人工审核与这份索引的提交历史。发现可疑扩展请通过 ofm-extensions 仓库的 SECURITY.md 举报。',
+        'ext.openRepo': '打开 ofm-extensions 仓库',
+        'ext.detail': '详情',
+        'ext.confirmRemove': '卸载 {name}？它的配置与密钥会一并删除。',
+        'ext.notRunning': '未运行',
+        'ext.count': '索引 {n} 个扩展',
+        'ext.discoverEmpty': '没有匹配的扩展。',
+        'ext.installedEmpty': '还没有安装任何扩展。去「发现」页挑一个。',
+        'ext.permissions': '权限',
+        'ext.permNetwork': '网络：可访问 {n} 个已声明的域名',
+        'ext.permSecrets': '密钥：{n} 项（只写不读回）',
+        'ext.openHomepage': '打开主页',
+        'ext.secretPlaceholder': '输入后保存，仅显示尾 4 位',
+        'ext.close': '关闭',
+        'ext.countByType': '渠道 {c} · 增强 {e}',
+        'ext.sort': '排序',
+        'ext.sortCurated': '默认',
+        'ext.sortNewest': '最新',
+        'ext.sortName': '名称',
+        'ext.searchHint': '按 / 聚焦',
+        'ext.clearSearch': '清除筛选',
+        'ext.updateAll': '全部更新',
+        'ext.updateProgress': '更新中 {i}/{n}',
+        'ext.updateCount': '{n} 个可更新',
+        'ext.modelCount': '模型 {n}',
+        'ext.requiresHost': '需宿主 ≥ {v}',
+        'ext.selfTest': '自检',
+        'ext.selfTestOk': '自检通过',
+        'ext.selfTestFail': '自检失败',
+        'ext.replaces': '接管内置 {name} 渠道',
+        'ext.filterTag': '标签',
+        'ext.hooks': '钩子',
+        'ext.type': '类型',
+        'ext.license': '许可证',
+        'ext.published': '发布于',
+        'ext.models': '模型',
+        'ext.repository': '仓库',
+        'ext.openRepository': '打开仓库',
+        'ext.storage': '本地存储',
+        'ext.storageOn': '可读写本地存储文件',
+        'ext.storageOff': '不读写本地文件',
+        'ext.originEmpty': '无网络访问',
+        'ext.notInstalledHint': '尚未安装，详情仅供参考。',
+        'ext.autoUpdate': '自动更新',
+        'ext.autoUpdateHint': '索引刷新时，自动安装已过观察窗口且处于启用状态的扩展更新；新版本先沉淀 {h} 小时再自动安装，防供应链投毒。',
+        'ext.source': '索引来源',
+        'ext.sourceBundled': '内置快照',
+        'ext.soakReady': '已过观察窗口，可立即更新',
+        'ext.soakWaiting': '观察窗口约剩 {h} 小时（新版本先沉淀再自动装，防供应链投毒）；也可手动立即更新',
+        'ext.auditTitle': '最近操作',
+        'ext.auditEmpty': '暂无记录。',
+        'ext.auditInstall': '安装',
+        'ext.auditInstallLocal': '本地安装',
+        'ext.auditUninstall': '卸载',
+        'ext.auditEnabled': '启停',
+        'ext.auditConfig': '配置',
+        'ext.auditSecret': '密钥',
+        'ext.auditAutoUpdate': '自动更新',
+        'ext.auditRegistry': '刷新市场',
+        'ext.exportShelf': '导出清单',
+        'ext.importShelf': '导入清单',
+        'ext.exportDone': '扩展清单已导出（JSON，不含密钥）',
+        'ext.importDone': '已恢复 {ok} 个扩展{fail}',
+        'ext.importFail': '，{n} 个失败（可能已下架或不兼容）',
+        'ext.importInvalid': '清单文件不是有效的 JSON，或没有可安装的扩展',
+        'ext.shelfTitle': '迁移助手：清单只含 id、版本、启停与配置，密钥永不导出',
         'sponsor.bannerTag': '中转站',
         'sponsor.bannerTitle': '北辰 API 中转站',
         'sponsor.bannerDescription': 'OFM 官方合作中转站，为用户提供稳定、开放、高性价比的大模型 API 接入服务。支持 Claude、ChatGPT、Grok、Gemini、智谱 GLM、Kimi、DeepSeek 等主流模型，适合在 Codex、Gemini CLI、Claude Code 及其他开发工具中统一配置使用。邀请可获百分之十的返现。',
@@ -571,11 +713,11 @@ window.__ModuleLoader__.load({
         'chan.auto.off': '今日尚未签到',
         'chan.auto.last': '上次结果：{result}',
         'nav.tab.aggregate': '聚合渠道',
-        'nav.tab.workspace': '模型工作台',
+        'nav.tab.workspace': '模型工作台（magpie）',
         'engine.start': '打开工作台',
         'engine.starting': '正在启动工作台…',
         'engine.failed': '工作台启动失败',
-        'engine.title': '模型工作台',
+        'engine.title': '模型工作台（magpie）',
         'engine.refresh': '刷新模型',
         'engine.expand': '展开工作台',
         'engine.close': '收起工作台',
@@ -857,6 +999,20 @@ window.__ModuleLoader__.load({
         'tag.context': 'Context',
         'tag.output': 'Max output',
         'tag.latency': 'First token',
+        'perf.more': 'Details',
+        'perf.less': 'Hide',
+        'perf.rate': 'Status',
+        'perf.rateTitle': 'Success rate excludes business rejections; the current unfinished hour is included.',
+        'perf.barsTitle': 'Recent success-rate samples; a grey tick means no data.',
+        'perf.latency': 'Latency',
+        'perf.speed': 'Throughput',
+        'perf.windowNote': 'Performance over the last {h} hours, from this site\u2019s own metrics.',
+        'perf.latencyTrend': 'Latency trend (last 24h)',
+        'perf.latencySub': 'Average token latency',
+        'perf.rateTrend': 'Availability (last 24h)',
+        'perf.rateSub': 'Success rate excludes business rejections; the current unfinished hour is included.',
+        'perf.loading': 'Reading performance data\u2026',
+        'perf.noSeries': 'This site has no hourly data for this model.',
         'tag.eacChannel': 'EAC lane · co-paid',
         'tag.new': 'NEW',
         'tag.newTitle': 'Just added: relayed to the EAC lane from OpenCode’s free tier.',
@@ -1082,6 +1238,7 @@ window.__ModuleLoader__.load({
         'news.osDenied': 'Notification permission was denied; restore it in your system or browser settings.',
         'news.link': 'Read more',
         'news.urgentTitle': 'Important announcement',
+        'news.holdHint': 'Read on — this dialog can close in {s}s',
         'news.gotIt': 'Got it',
         'news.lastFetch': 'Last fetch',
         'news.fetchFailed': 'Feed unreachable right now (showing the cached copy)',
@@ -1134,6 +1291,35 @@ window.__ModuleLoader__.load({
         'picks.title': 'Recommended projects',
         'picks.sub': 'A set of open-source projects by the same author: bringing the agent to a native desktop, keeping hundreds of plugins working together, and keeping video and design work on this machine. If they are useful, a star is the thanks they understand.',
         'picks.foot': 'A star is the only payslip an open-source project gets — it decides how much more time the author can spend. Every project here is free, open source and ad-free; one click is the most concrete support there is.',
+        'nav.tab.feedback': 'Feedback',
+        'fb.title': 'Feedback & wishes',
+        'fb.sub': 'Report a problem, or tell us what you want to see',
+        'fb.signIn': 'Sign in with GitHub',
+        'fb.signOut': 'Sign out {login}',
+        'fb.gateTitle': 'Sign in to submit',
+        'fb.gateBody': 'Signing in only tells us who a report came from, so we can come back to you once it is fixed. It asks for your public GitHub identity only — no repository permissions, and nothing is posted to a public issue list.',
+        'fb.code': 'Enter this code on the GitHub page',
+        'fb.openVerify': 'Open github.com/login/device',
+        'fb.waiting': 'Waiting for authorization…',
+        'fb.opened': 'The GitHub page is open. Enter the code above, then come back here.',
+        'fb.signedIn': 'Signed in to GitHub — you can submit now.',
+        'fb.signedOut': 'Signed out of feedback.',
+        'fb.kind.bug': 'Report a problem',
+        'fb.kind.wish': 'Feature wish',
+        'fb.titleField': 'Title',
+        'fb.titlePlaceholderBug': 'One line on what went wrong',
+        'fb.titlePlaceholderWish': 'One line on what you would like to have',
+        'fb.detailField': 'Details',
+        'fb.detailPlaceholderBug': 'Steps to reproduce, what you expected, what actually happened. Paste the error text if you have it.',
+        'fb.detailPlaceholderWish': 'What you do today, where it breaks down, and how you would like this to work.',
+        'fb.submit': 'Submit',
+        'fb.sent': 'Submitted, reference {id}',
+        'fb.submitted': 'Feedback submitted — thank you.',
+        'fb.expired': 'The code expired. Please start the sign-in again.',
+        'fb.denied': 'GitHub authorization was not completed.',
+        'fb.stale': 'Your feedback sign-in has lapsed. Sign in with GitHub again to resubmit — your text is still here.',
+        'fb.version': 'Version',
+        'fb.note': 'A submission carries your plugin version and operating system so the report can be placed. Nothing else is read from this machine.',
         'picks.stars': 'Stars',
         'picks.forks': 'Forks',
         'picks.fork': 'Fork',
@@ -1169,6 +1355,103 @@ window.__ModuleLoader__.load({
         'picks.design.tag4': 'Real file export',
         'free.title': 'Free models',
         'free.sub': 'Anonymous free and Kilo models share this pool. Water shows the selectable share; measured availability is shown separately.',
+        'nav.tab.extensions': 'OFM channel extensions',
+        'ext.search': 'Search extensions',
+        'ext.all': 'All',
+        'ext.title': 'OFM channel extensions',
+        'ext.bunMissing': 'Bun not installed',
+        'ext.changelog': "What's new",
+        'ext.viewSource': 'View source',
+        'ext.indexFresh': 'Signed index generated {at}',
+        'ext.bunHint': 'OpenCode free-lane inference needs a local Bun. Install Bun (bun.sh or npm i -g bun) and restart, or point OUR_FREE_MODEL_BUN at its executable.',
+        'ext.sub': 'A marketplace for channel and enhancement modules: signed index, sandboxed runs, decoupled from the core — install a channel and its models appear on the free page.',
+        'ext.tabDiscover': 'Discover',
+        'ext.tabInstalled': 'Installed',
+        'ext.tabSecurity': 'Safety',
+        'ext.install': 'Install',
+        'ext.installing': 'Installing…',
+        'ext.installed': 'Installed',
+        'ext.update': 'Update',
+        'ext.updateAvailable': 'Update ready',
+        'ext.enable': 'Enable',
+        'ext.disable': 'Disable',
+        'ext.uninstall': 'Uninstall',
+        'ext.channel': 'Channel',
+        'ext.enhancement': 'Enhancement',
+        'ext.verified': 'Signed',
+        'ext.verifiedTitle': 'This extension comes from the Ed25519-signed index',
+        'ext.refresh': 'Refresh index',
+        'ext.empty': 'The extension registry is unreachable',
+        'ext.indexHint': 'The index may still be warming up or blocked by the network; use “Refresh index” to retry.',
+        'ext.failed': 'The action failed',
+        'ext.security': 'The safety model',
+        'ext.securityBody': 'Extensions are executable code — install only what this signed index carries. An install verifies the Ed25519 signature and the SHA-256 digest and runs a static scan (node:*, process, eval, dynamic import and minified bundles are refused); the code runs inside a Worker VM sandbox whose only import is the controlled ofm:sdk; the network is limited to the domains the manifest declares, secrets go in and never come out, and every hook has a timeout breaker.',
+        'ext.securityBody2': "These defenses target accidents and carelessness, not a determined author — the real gates are the signature, human review, and this index's commit history. Report anything suspicious through SECURITY.md in the ofm-extensions repository.",
+        'ext.openRepo': 'Open the ofm-extensions repository',
+        'ext.detail': 'Details',
+        'ext.confirmRemove': 'Uninstall {name}? Its configuration and secrets are removed too.',
+        'ext.notRunning': 'Not running',
+        'ext.count': '{n} extensions in the index',
+        'ext.discoverEmpty': 'No extensions match.',
+        'ext.installedEmpty': 'Nothing installed yet — pick something on the Discover tab.',
+        'ext.permissions': 'Permissions',
+        'ext.permNetwork': 'Network: {n} declared host(s)',
+        'ext.permSecrets': 'Secrets: {n} (write-only)',
+        'ext.openHomepage': 'Open homepage',
+        'ext.secretPlaceholder': 'Type to save; only the last 4 are shown',
+        'ext.close': 'Close',
+        'ext.countByType': '{c} channels · {e} enhancements',
+        'ext.sort': 'Sort',
+        'ext.sortCurated': 'Curated',
+        'ext.sortNewest': 'Newest',
+        'ext.sortName': 'Name',
+        'ext.searchHint': 'Press / to search',
+        'ext.clearSearch': 'Clear filters',
+        'ext.updateAll': 'Update all',
+        'ext.updateProgress': 'Updating {i}/{n}',
+        'ext.updateCount': '{n} update(s) ready',
+        'ext.modelCount': '{n} models',
+        'ext.requiresHost': 'needs host ≥ {v}',
+        'ext.selfTest': 'Self-test',
+        'ext.selfTestOk': 'Self-test passed',
+        'ext.selfTestFail': 'Self-test failed',
+        'ext.replaces': 'takes over the built-in {name} lane',
+        'ext.filterTag': 'Tag',
+        'ext.hooks': 'Hooks',
+        'ext.type': 'Type',
+        'ext.license': 'License',
+        'ext.published': 'Published',
+        'ext.models': 'Models',
+        'ext.repository': 'Repository',
+        'ext.openRepository': 'Open repository',
+        'ext.storage': 'Local storage',
+        'ext.storageOn': 'May read and write a local storage file',
+        'ext.storageOff': 'Reads and writes no local files',
+        'ext.originEmpty': 'No network access',
+        'ext.notInstalledHint': 'Not installed yet — details are for reference.',
+        'ext.autoUpdate': 'Auto-update',
+        'ext.autoUpdateHint': 'On each registry refresh, install enabled updates that have cleared the observation window; a new version soaks {h} hours before it auto-installs, blunting supply-chain attacks.',
+        'ext.source': 'Index source',
+        'ext.sourceBundled': 'bundled snapshot',
+        'ext.soakReady': 'Cleared the observation window — update now',
+        'ext.soakWaiting': 'About {h}h left in the observation window (new versions soak before auto-install, blunting supply-chain attacks); manual update is always available',
+        'ext.auditTitle': 'Recent actions',
+        'ext.auditEmpty': 'Nothing yet.',
+        'ext.auditInstall': 'Install',
+        'ext.auditInstallLocal': 'Local install',
+        'ext.auditUninstall': 'Uninstall',
+        'ext.auditEnabled': 'Enable/disable',
+        'ext.auditConfig': 'Config',
+        'ext.auditSecret': 'Secret',
+        'ext.auditAutoUpdate': 'Auto-update',
+        'ext.auditRegistry': 'Refresh index',
+        'ext.exportShelf': 'Export list',
+        'ext.importShelf': 'Import list',
+        'ext.exportDone': 'Extension list exported (JSON, no secrets)',
+        'ext.importDone': 'Restored {ok} extension(s){fail}',
+        'ext.importFail': ', {n} failed (delisted or incompatible)',
+        'ext.importInvalid': 'The file is not valid JSON, or carries no installable extensions',
+        'ext.shelfTitle': 'Migration: the list carries ids, versions, toggles and config — never secrets',
         'sponsor.bannerTag': 'Relay',
         'sponsor.bannerTitle': 'Beichen API relay',
         'sponsor.bannerDescription': 'OFM’s official relay partner provides stable, open and cost-effective model API access. Claude, ChatGPT, Grok, Gemini, GLM, Kimi and DeepSeek are supported for one consistent setup in Codex, Gemini CLI, Claude Code and other developer tools. Invite others to receive 10% cashback.',
@@ -1348,11 +1631,11 @@ window.__ModuleLoader__.load({
         'chan.auto.off': 'Not checked in today',
         'chan.auto.last': 'Last result: {result}',
         'nav.tab.aggregate': 'Aggregate',
-        'nav.tab.workspace': 'Model workspace',
+        'nav.tab.workspace': 'Model workspace (magpie)',
         'engine.start': 'Open workspace',
         'engine.starting': 'Starting workspace…',
         'engine.failed': 'Workspace could not start',
-        'engine.title': 'Model workspace',
+        'engine.title': 'Model workspace (magpie)',
         'engine.refresh': 'Refresh models',
         'engine.expand': 'Expand workspace',
         'engine.close': 'Collapse workspace',
@@ -1643,12 +1926,12 @@ window.__ModuleLoader__.load({
 .ofm_sechead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding-bottom:6px;border-bottom:1px solid var(--dsw-alias-border-l1)}
 .ofm_sec_title{font-size:14px;font-weight:680;letter-spacing:-.2px}
 .ofm_sec_hint{font-size:11.5px;color:var(--dsw-alias-label-tertiary);margin-left:auto}
-.ofm_grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(252px,1fr));gap:10px}
+.ofm_grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(252px,1fr));gap:10px;align-items:start}
 /* ══ 卡片（双层 bezel：hairline 边框 + 顶部内高光 + 柔和外阴影） ═══════ */
 .ofm_card{position:relative;display:flex;flex-direction:column;gap:8px;padding:12px 13px;border-radius:13px;border:1px solid var(--dsw-alias-border-l2);background:color-mix(in srgb,var(--dsw-alias-bg-layer-3) 80%,transparent);box-shadow:inset 0 1px 0 rgb(255 255 255 / 6%),0 1px 2px color-mix(in srgb,var(--dsw-alias-state-business-primary) 7%,transparent),0 3px 10px color-mix(in srgb,var(--dsw-alias-state-business-primary) 4%,transparent);transition:transform .2s cubic-bezier(.32,.72,0,1),box-shadow .24s ease,border-color .18s ease}
 .ofm_card:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--dsw-alias-state-business-primary) 66%,var(--dsw-alias-border-l2));box-shadow:inset 0 1px 0 rgb(255 255 255 / 9%),0 16px 34px color-mix(in srgb,var(--dsw-alias-state-business-primary) 12%,transparent)}
 .ofm_card.dim{opacity:.68}
-.ofm_cardhead{display:flex;align-items:center;gap:8px}
+.ofm_cardhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .ofm_cardname{font-size:13.5px;font-weight:650;letter-spacing:-.1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ofm_badge{margin-left:auto;font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:999px;border:1px solid var(--dsw-alias-border-l1);color:var(--dsw-alias-label-secondary);background:color-mix(in srgb,var(--dsw-alias-bg-layer-1) 60%,transparent);white-space:nowrap}
 .ofm_badge.available{color:var(--dsw-alias-state-success-primary);border-color:color-mix(in srgb,var(--dsw-alias-state-success-primary) 45%,transparent);background:color-mix(in srgb,var(--dsw-alias-state-success-primary) 10%,transparent)}
@@ -1667,6 +1950,54 @@ window.__ModuleLoader__.load({
 .ofm_card.pinned:hover{border-color:color-mix(in srgb,var(--dsw-alias-state-error-primary) 62%,var(--dsw-alias-border-l2))}
 .ofm_metrics{display:flex;gap:12px;font-size:11px;color:var(--dsw-alias-label-tertiary);flex-wrap:wrap}
 .ofm_metrics b{color:var(--dsw-alias-label-secondary);font-weight:600;font-variant-numeric:tabular-nums}
+/* ══ 性能条（复刻站点模型广场：成功率柱 + 延迟 + 吞吐 + 详情） ═════════ */
+/* The site's strip is designed for a 317px card; the roster's grid is 252px.
+   Two rows here rather than one: the three metrics keep the site's own gaps and
+   type sizes, and the 详情 button drops beneath them instead of crushing the
+   numbers it sits beside. */
+/* The strip has to survive the roster's 252px card, where three metric columns
+   plus a button cannot share one line: the numbers would either spill past the
+   border or collapse to "1…". So it wraps into two clean rows — the status
+   column (label + 24-tick bar) with the 详情 button on the first, latency and
+   throughput side by side on the second. At the site's own 317px and wider the
+   status column and both figures still fit one line, and the wrap never fires. */
+.ofm_perf{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;width:100%;min-width:0;padding-top:8px;border-top:1px solid var(--dsw-alias-border-l1)}
+.ofm_perfstats{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px 14px;flex:1 1 auto;min-width:0;margin:0;font-size:12px;font-variant-numeric:tabular-nums}
+.ofm_perfcol{min-width:0}
+/* The status column always owns its row, so the bar is never cut in half. */
+.ofm_perfcol.status{width:96px;flex:0 0 100%}
+/* The two figures then share the next row, each with room for a full reading
+   (a value like 119.1t/s needs about 48px). */
+.ofm_perfcol.value{flex:1 1 60px;min-width:52px}
+.ofm_perflabel{display:flex;align-items:center;justify-content:space-between;gap:4px;margin:0;font-size:11px;line-height:16px;color:var(--dsw-alias-label-tertiary);white-space:nowrap;min-width:0}
+.ofm_perfnum{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--dsw-alias-label-secondary)}
+.ofm_perflabel .ofm_perfnum{font-size:11px}
+/* A figure that still does not fit is clipped, never allowed to run past the
+   card's edge: an ellipsis reads as "too narrow here", a number hanging outside
+   the border reads as a broken layout. */
+.ofm_perfnum.wide{display:block;margin-top:4px;font-size:12px;line-height:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--dsw-alias-label-primary)}
+.ofm_perfbars{display:flex;align-items:center;gap:1px;height:12px;width:96px;max-width:100%;margin:4px 0 0;overflow:hidden}
+/* Each tick keeps the site's 3px at full width and shrinks proportionally when
+   the column is narrower — the bar must never widen the card it sits in. */
+.ofm_perfbar{flex:0 1 3px;min-width:0;height:100%;border-radius:2px;background:var(--dsw-alias-border-l1)}
+.ofm_perfbar.good{background:#34d399}
+.ofm_perfbar.fair{background:#f59e0b}
+.ofm_perfbar.poor{background:#ef4444}
+.ofm_perfbar.none{background:color-mix(in srgb,var(--dsw-alias-border-l1) 70%,transparent)}
+.ofm_perfmore{display:inline-flex;align-items:center;gap:4px;flex:none;height:26px;padding:0 10px;border-radius:13px;border:1px solid var(--dsw-alias-border-l1);background:transparent;font:inherit;font-size:12px;font-weight:500;color:var(--dsw-alias-label-primary);cursor:pointer;transition:background .15s ease,border-color .15s ease;margin-left:auto}
+.ofm_perfmore:hover{background:color-mix(in srgb,var(--dsw-alias-bg-layer-1) 70%,transparent);border-color:var(--dsw-alias-border-l2)}
+.ofm_perfchev{font-size:9px;color:var(--dsw-alias-label-tertiary);line-height:1}
+.ofm_perfnote{flex-basis:100%;margin:0;font-size:11px;line-height:16px;color:var(--dsw-alias-label-tertiary)}
+/* ══ 趋势图（详情展开：延迟趋势 + 可用率，站点同款） ═══════════════════ */
+.ofm_charts{flex-basis:100%;display:flex;flex-direction:column;gap:12px;margin-top:2px}
+.ofm_chartblock{display:flex;flex-direction:column;gap:4px}
+.ofm_charthead{display:flex;flex-direction:column;gap:1px}
+.ofm_charttitle{font-size:11.5px;font-weight:600;color:var(--dsw-alias-label-secondary)}
+.ofm_chartsub{font-size:10.5px;color:var(--dsw-alias-label-tertiary)}
+.ofm_chart{width:100%;height:auto;display:block;overflow:visible}
+.ofm_chartgrid{stroke:var(--dsw-alias-border-l1);stroke-width:.6}
+.ofm_chartaxis{font-size:6.4px;fill:var(--dsw-alias-label-tertiary);font-variant-numeric:tabular-nums}
+.ofm_chartdot{stroke:#fff;stroke-width:.6}
 .ofm_note{font-size:11px;color:var(--dsw-alias-label-tertiary);line-height:1.5}
 /* ══ 面板 ══════════════════════════════════════════════════════════════ */
 .ofm_panel{padding:16px;border-radius:16px;border:1px solid var(--dsw-alias-border-l2);background:color-mix(in srgb,var(--dsw-alias-bg-layer-2) 82%,transparent);box-shadow:inset 0 1px 0 rgb(255 255 255 / 5%),0 2px 6px rgb(0 0 0 / 4%);display:flex;flex-direction:column;gap:12px}
@@ -1826,6 +2157,8 @@ window.__ModuleLoader__.load({
 .ofm_toast.warn::before{background:var(--dsw-alias-state-warning-primary,#f0a441)}
 .ofm_toast.urgent::before{background:var(--dsw-alias-state-error-primary)}
 .ofm_toast.warn{border-color:color-mix(in srgb,var(--dsw-alias-state-warning-primary,#f0a441) 42%,var(--dsw-alias-border-l2))}
+/* urgent 弹层的关闭倒计时提示：弱化、右对齐到按钮旁 */
+.ofm_holdhint{font-size:11.5px;color:var(--dsw-alias-label-tertiary);font-variant-numeric:tabular-nums}
 .ofm_toast.urgent{border-color:color-mix(in srgb,var(--dsw-alias-state-error-primary) 42%,var(--dsw-alias-border-l2))}
 .ofm_toast .ofm_toasttitle{font-weight:660;font-size:12.5px;display:flex;align-items:center;gap:7px}
 .ofm_toast .ofm_toastbody{color:var(--dsw-alias-label-secondary);max-height:180px;overflow:auto;overflow-wrap:anywhere}
@@ -2665,6 +2998,90 @@ window.__ModuleLoader__.load({
  .ofm_shell .ofm_navtools .ofm_switch span{display:none}
  .ofm_shell .ofm_navtools .ofm_starbtn{font-size:0;padding:6px;gap:0}
 }
+/* ── 扩展市场卡片与详情抽屉（2.8.1 新增页签，其余样式全部复用既有令牌） ── */
+.ofm_extcard{gap:10px;padding-left:17px}
+.ofm_extcard::before{content:"";position:absolute;left:6px;top:13px;bottom:13px;width:3px;border-radius:999px;background:var(--dsw-alias-state-business-primary);opacity:.75;transition:opacity .2s var(--ease-instrument)}
+.ofm_extcard.channel::before{background:linear-gradient(180deg,var(--dsw-alias-state-business-primary),color-mix(in srgb,var(--dsw-alias-state-business-primary) 30%,transparent))}
+.ofm_extcard.enhancement::before{background:linear-gradient(180deg,var(--dsw-alias-state-success-primary),color-mix(in srgb,var(--dsw-alias-state-success-primary) 30%,transparent))}
+.ofm_extcard:hover::before{opacity:1}
+.ofm_extgrid>.ofm_extcard{animation:ofmrisein .4s var(--ease-instrument) backwards;animation-delay:calc(var(--i,0)*45ms)}
+.ofm_extskel{position:relative;overflow:hidden;border-radius:13px;border:1px solid var(--dsw-alias-border-l2);background:color-mix(in srgb,var(--dsw-alias-bg-layer-3) 80%,transparent);min-height:150px;padding:13px;display:flex;flex-direction:column;gap:9px;justify-content:center;animation:ofmrisein .4s var(--ease-instrument) backwards;animation-delay:calc(var(--i,0)*45ms)}
+.ofm_extskel::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(100deg,transparent 30%,color-mix(in srgb,var(--dsw-alias-bg-layer-1) 55%,transparent) 50%,transparent 70%);transform:translateX(-100%);animation:ofm-skel-shine 1.8s ease-in-out infinite}
+.ofm_extskel i{display:block;height:11px;border-radius:6px;background:color-mix(in srgb,var(--dsw-alias-label-secondary) 14%,transparent);animation:ofmpulse 1.8s ease-in-out infinite}
+.ofm_extdetail{width:min(560px,92vw)}
+.ofm_extdetail:focus{outline:none}
+.ofm_extcard .ofm_id{white-space:normal;text-overflow:clip;line-height:1.5}
+/* 卡片头：字母头像 + 标题列；详情弹层头复用同一行排布（后声明覆盖弹层的纵向列） */
+.ofm_exthead{display:flex;flex-direction:row;align-items:center;gap:10px;min-width:0}
+.ofm_exttitle{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.ofm_extavatar{flex:none;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:750;color:var(--dsw-alias-label-on-accent,#fff);background:linear-gradient(135deg,var(--dsw-alias-state-business-primary),color-mix(in srgb,var(--dsw-alias-state-business-primary) 55%,#000));box-shadow:inset 0 1px 0 rgb(255 255 255 / 22%),0 2px 6px color-mix(in srgb,var(--dsw-alias-state-business-primary) 30%,transparent);transition:transform .2s var(--ease-instrument)}
+.ofm_extavatar.enhancement{background:linear-gradient(135deg,var(--dsw-alias-state-success-primary),color-mix(in srgb,var(--dsw-alias-state-success-primary) 55%,#000));box-shadow:inset 0 1px 0 rgb(255 255 255 / 22%),0 2px 6px color-mix(in srgb,var(--dsw-alias-state-success-primary) 30%,transparent)}
+.ofm_extcard:hover .ofm_extavatar{transform:scale(1.06)}
+.ofm_extcard .ofm_cardhead{gap:6px}
+.ofm_extblurb{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:0}
+.ofm_extfoot{display:flex;gap:8px;align-items:center;padding-top:9px;margin-top:auto;border-top:1px solid color-mix(in srgb,var(--dsw-alias-border-l1) 72%,transparent)}
+.ofm_extfoot .ofm_btn+.ofm_btn,.ofm_extfoot .ofm_badge{margin-left:auto}
+/* 工具行：搜索框内嵌 / 快捷键角标 */
+.ofm_exttoolbar{flex-wrap:wrap}
+.ofm_extsearch{position:relative;display:inline-flex;align-items:center}
+.ofm_extsearch .ofm_input{padding-right:30px}
+.ofm_kbd{position:absolute;right:9px;pointer-events:none;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;line-height:1;padding:3px 6px;border-radius:6px;border:1px solid var(--dsw-alias-border-l2);color:var(--dsw-alias-label-tertiary);background:var(--dsw-alias-bg-layer-1);box-shadow:inset 0 -1px 0 var(--dsw-alias-border-l1)}
+/* 空态与详情弹层 */
+.ofm_extempty{display:flex;flex-direction:column;align-items:center;gap:10px;padding:34px 12px;border:1px dashed var(--dsw-alias-border-l2);border-radius:14px}
+.ofm_extorigins{display:flex;flex-wrap:wrap;gap:6px}
+.ofm_extorigins code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10.5px;padding:3px 8px;border-radius:7px;border:1px solid var(--dsw-alias-border-l1);background:color-mix(in srgb,var(--dsw-alias-bg-layer-1) 74%,transparent);color:var(--dsw-alias-label-secondary)}
+.ofm_extdetail .ofm_anntitle{font-size:16.5px}
+.ofm_extdetail .ofm_annsub{overflow-wrap:anywhere}
+.ofm_extdetail .ofm_annfoot .ofm_badge{margin-left:0}
+/* 更新内容：详情弹层里的 newest-first 发布说明列表 */
+.ofm_changelog{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-direction:column;gap:5px}
+.ofm_changelog li{font-size:12px;line-height:1.55;color:var(--dsw-alias-label-secondary);padding:6px 9px;border-radius:8px;border:1px solid color-mix(in srgb,var(--dsw-alias-border-l1) 78%,transparent);background:color-mix(in srgb,var(--dsw-alias-bg-layer-1) 55%,transparent);overflow-wrap:anywhere}
+.ofm_changelog li:first-child{color:var(--dsw-alias-label-primary)}
+/* 封面横幅：负 margin 出血到卡片内缘（padding 上 12/右 13/左 17），加载失败由
+   组件整块退场；详情弹层第一子元素自然贴顶，仅配内圆角 */
+.ofm_extcover{position:relative;height:96px;flex:none;margin:-12px -13px 0 -17px;border-radius:12px 12px 0 0;overflow:hidden;background:color-mix(in srgb,var(--dsw-alias-bg-layer-1) 55%,transparent);border-bottom:1px solid color-mix(in srgb,var(--dsw-alias-border-l1) 82%,transparent)}
+.ofm_extcover img{display:block;width:100%;height:100%;object-fit:cover}
+.ofm_extdetail .ofm_extcover{height:150px;margin:0;border-radius:17px 17px 0 0;border-bottom:1px solid var(--dsw-alias-border-l2)}
+.ofm_extdetail .ofm_annhead{position:relative}
+/* 标签点选浏览 / 接管内置渠道徽标 / 分段控件计数（magpie 市场的分类手势） */
+.ofm_tagbtn{cursor:pointer;font:inherit;transition:border-color .18s var(--ease-instrument),color .18s var(--ease-instrument),transform .18s var(--ease-instrument)}
+.ofm_tagbtn:hover{border-color:color-mix(in srgb,var(--dsw-alias-state-business-primary) 62%,transparent);color:var(--dsw-alias-state-business-primary);transform:translateY(-1px)}
+.ofm_replacetag{flex:none;font-size:10px;font-weight:700;line-height:1;padding:2px 8px;border-radius:999px;white-space:nowrap;color:color-mix(in srgb,var(--dsw-alias-state-warning-primary,#f2a65a) 80%,var(--dsw-alias-label-primary));background:color-mix(in srgb,var(--dsw-alias-state-warning-primary,#f2a65a) 22%,transparent);border:1px solid color-mix(in srgb,var(--dsw-alias-state-warning-primary,#f2a65a) 52%,transparent)}
+.ofm_segcount{margin-left:5px;font-size:9.5px;font-weight:650;color:var(--dsw-alias-label-tertiary);background:color-mix(in srgb,var(--dsw-alias-label-secondary) 10%,transparent);padding:1px 5px;border-radius:999px}
+.ofm_seg button[aria-pressed="true"] .ofm_segcount{color:var(--dsw-alias-label-secondary)}
+/* 2.10 增补：soak 说明行、索引来源徽标、最近操作行、模型货架、清单导入标签 */
+.ofm_soakline{margin:2px 0 0;font-size:11.5px;line-height:1.55;color:var(--dsw-alias-label-secondary);overflow-wrap:anywhere}
+.ofm_extsource{flex:none;font-size:10.5px;line-height:1;padding:4px 10px;border-radius:999px;border:1px solid var(--dsw-alias-border-l2);color:var(--dsw-alias-label-secondary);background:color-mix(in srgb,var(--dsw-alias-bg-layer-1) 74%,transparent);white-space:nowrap}
+.ofm_importlabel{display:inline-flex;align-items:center}
+.ofm_audrows{display:flex;flex-direction:column;gap:4px}
+.ofm_audrow{display:flex;align-items:baseline;gap:10px;font-size:12px;flex-wrap:wrap}
+.ofm_audrow code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--dsw-alias-label-secondary)}
+.ofm_audat{flex:none;color:var(--dsw-alias-label-tertiary);font-variant-numeric:tabular-nums}
+.ofm_inlinehint{display:inline-flex;align-items:center;cursor:help}
+.ofm_modelshelf{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.ofm_modelchip{font-size:10.5px;line-height:1;padding:4px 9px;border-radius:999px;border:1px solid color-mix(in srgb,var(--dsw-alias-border-l1) 82%,transparent);background:color-mix(in srgb,var(--dsw-alias-bg-layer-1) 62%,transparent);color:var(--dsw-alias-label-secondary);white-space:nowrap;max-width:210px;overflow:hidden;text-overflow:ellipsis}
+/* 封面淡入：字节到位前不占住卡片顶部的视觉重量 */
+.ofm_extcover img{opacity:0;transition:opacity .45s var(--ease-instrument)}
+.ofm_extcover img.ofm_loaded{opacity:1}
+/* ── 反馈与许愿 ──────────────────────────────────────────────────────────── */
+/* 设备码：等宽大字号 + 字距，用户要照着念到另一个窗口里 */
+.ofm_fbcode{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ofm_fbcodeval{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:26px;font-weight:700;letter-spacing:.16em;line-height:1.2;padding:10px 16px;border-radius:12px;border:1px solid var(--dsw-alias-border-l2);background:color-mix(in srgb,var(--dsw-alias-bg-layer-1) 70%,transparent);color:var(--dsw-alias-label-primary);user-select:all}
+.ofm_fbgate{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.ofm_fbgate h3{margin:0;font-size:15px;font-weight:650;color:var(--dsw-alias-label-primary)}
+.ofm_fbform{display:flex;flex-direction:column;gap:12px}
+.ofm_fbfield{display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:600;color:var(--dsw-alias-label-secondary)}
+.ofm_fbtext{resize:vertical;min-height:150px;line-height:1.6;font-weight:400}
+.ofm_fbfoot{align-items:center}
+.ofm_fbfoot .ofm_note{margin-left:auto;font-variant-numeric:tabular-nums}
+.ofm_fbreceipt{margin:0;font-size:12px;color:var(--dsw-alias-state-success-primary)}
+/* 类型切换：两枚等宽按钮，选中态用底色而不是描边，和导航的滑片语言一致 */
+.ofm_fbsegments{display:inline-flex;gap:4px;padding:3px;border-radius:11px;border:1px solid color-mix(in srgb,var(--dsw-alias-border-l2) 82%,transparent);background:color-mix(in srgb,var(--dsw-alias-bg-layer-1) 58%,transparent);align-self:flex-start}
+.ofm_fbseg{font:inherit;font-size:12px;font-weight:600;padding:6px 14px;border-radius:8px;border:0;background:transparent;color:var(--dsw-alias-label-secondary);cursor:pointer;transition:color .18s ease,background .18s ease}
+.ofm_fbseg[data-on="true"]{color:var(--dsw-alias-label-primary);background:color-mix(in srgb,var(--dsw-alias-state-business-primary) 16%,transparent)}
+.ofm_fbseg:hover:not(:disabled){color:var(--dsw-alias-label-primary)}
+.ofm_fbseg:disabled{cursor:default;opacity:.6}
+.ofm_fbseg:focus-visible{outline:2px solid var(--dsw-alias-state-business-primary);outline-offset:2px}
 `
 
     // ── helpers ───────────────────────────────────────────────────────────────
@@ -2997,8 +3414,20 @@ window.__ModuleLoader__.load({
       return undefined
     }
 
-    /** Modal surface for `urgent` announcements; dismiss runs the ack callback. */
-    function showUrgentModal({ title, html, confirmLabel, onClose }) {
+    /** Urgent announcement ids already shown on this page. Both the arrival
+     *  push and the boot re-check consult it, so one announcement opens one
+     *  modal per page load — a replace, never a stack. */
+    const urgentShownIds = new Set()
+
+    /** Modal surface for `urgent` announcements; dismiss runs the ack callback.
+     *
+     *  `holdMs` keeps the close control locked for that long with a visible
+     *  countdown: an announcement that must be read should not be dismissible
+     *  by reflex. The timer is one-shot and cleared with the modal. The hint
+     *  text travels in from the caller like `confirmLabel` — this function
+     *  predates any `t` binding and must not grow one (same rule as
+     *  showToast's comment below). */
+    function showUrgentModal({ title, html, confirmLabel, onClose, holdMs = 0, holdHint = '' }) {
       try {
         document.querySelector('.ofm_scrim[data-ofm-urgent]')?.remove()
         const scrim = document.createElement('div')
@@ -3020,8 +3449,35 @@ window.__ModuleLoader__.load({
         ok.type = 'button'
         ok.className = 'ofm_btn primary'
         ok.textContent = confirmLabel ?? 'OK'
-        ok.addEventListener('click', () => { scrim.remove(); onClose?.() })
+        ok.addEventListener('click', () => {
+          if (ok.disabled === true) return
+          scrim.remove()
+          if (holdTimer !== undefined) { clearTimeout(holdTimer); holdTimer = undefined }
+          onClose?.()
+        })
         foot.appendChild(ok)
+        let remaining = Math.max(0, Math.round(Number(holdMs) || 0))
+        let holdTimer
+        const settle = () => {
+          ok.disabled = false
+          ok.textContent = confirmLabel ?? 'OK'
+          hint?.remove()
+          hint = undefined
+        }
+        // 倒计时提示行：告诉用户这不是坏的按钮，是刻意的三秒。
+        let hint = remaining > 0 ? document.createElement('span') : undefined
+        if (hint !== undefined) {
+          hint.className = 'ofm_holdhint'
+          hint.setAttribute('aria-live', 'polite')
+          foot.appendChild(hint)
+        }
+        const tick = () => {
+          if (remaining <= 0) { settle(); return }
+          ok.disabled = true
+          hint.textContent = String(holdHint ?? '').replace('{s}', String(Math.ceil(remaining / 1000)))
+          holdTimer = setTimeout(() => { remaining = Math.max(0, remaining - 250); tick() }, 250)
+        }
+        tick()
         modal.appendChild(head)
         modal.appendChild(body)
         modal.appendChild(foot)
@@ -3063,6 +3519,7 @@ window.__ModuleLoader__.load({
       onClick: props.onClick,
       title: props.title,
       'aria-label': props['aria-label'],
+      'aria-busy': props.busy === true ? 'true' : props['aria-busy'],
     }, props.children)
 
     function Section(props) {
@@ -3163,7 +3620,8 @@ window.__ModuleLoader__.load({
 
     // ── model roster ──────────────────────────────────────────────────────────
     function ModelCard(props) {
-      const { model: m, t, onBench, bench, locked, eacLogin, onVisibility, busy } = props
+      const { model: m, t, onBench, bench, locked, eacLogin, onVisibility, busy, perf } = props
+      const [perfOpen, setPerfOpen] = useState(false)
       const listed = m.availabilitySource === 'listing'
       const manual = m.availabilitySource === 'manual'
       const stateKey = `state.${m.availability}`
@@ -3184,14 +3642,20 @@ window.__ModuleLoader__.load({
         ? m.efforts.map(levelName).join(' / ')
         : undefined
       return h('article', { className: 'ofm_card' + (dim ? ' dim' : '') + (m.pinned === true ? ' pinned' : '') },
+        // Two rows, not one: the chips row carries the channel tag and the
+        // badges, and the model name gets a full-width row of its own. They
+        // used to share one flex line, where the name was the only child that
+        // could shrink — so a card with EAC + NEW + 爆 + a status badge left it
+        // about seven pixels and the name rendered as "EA…". A name is the one
+        // thing on the card that must never be the thing that gives way.
         h('div', { className: 'ofm_cardhead' },
           m.channel === 'eac' ? h('span', { className: 'ofm_chantag', title: t('tag.eacChannel') }, 'EAC') : null,
           m.channel === 'eac' && locked === true ? h('span', { className: 'ofm_chantag', title: t('eac.lockedTitle') }, '🔒') : null,
           m.channel === 'kilo' ? h('span', { className: 'ofm_chantag', title: t('tag.kiloChannel') }, 'Kilo') : null,
-          h('span', { className: 'ofm_cardname', title: m.name }, m.name),
           m.isNew === true ? h('span', { className: 'ofm_newtag', title: t('tag.newTitle') }, t('tag.new')) : null,
           m.hot === true ? h('span', { className: 'ofm_hottag', title: t('tag.hotTitle') }, t('tag.hot')) : null,
           h('span', { className: 'ofm_badge ' + (listed ? 'unknown' : m.availability), title: listed ? t('hint.listed') : undefined }, listed ? t('state.listed') : t(stateKey))),
+        h('div', { className: 'ofm_cardname', title: m.name }, m.name),
         h('div', { className: 'ofm_id', title: m.id }, m.label ?? m.id),
         h('div', { className: 'ofm_tags' },
           m.hiddenByUser === true ? h('span', { className: 'ofm_tag' }, t('visibility.hidden')) : null,
@@ -3221,6 +3685,39 @@ window.__ModuleLoader__.load({
                 m.ttftMs === undefined || m.ttftMs === 0 ? null : h('span', null, t('tag.latency'), ' ', h('b', null, Math.round(m.ttftMs)), ' ms'),
                 h('span', null, manual ? t('pref.measuredAt') : t('pref.probedAt'), ' ', h('b', null, ago(m.probedAt, t.locale)))),
         m.canDisableThinking === false ? h('p', { className: 'ofm_note' }, t('hint.sharedBudget')) : null,
+        perf === undefined || perf.settling === true ? null : h(Fragment, null,
+          // The site's own performance strip, reproduced: a 24-tick success bar
+          // under its rate, then latency and throughput, then 详情. The bar is
+          // the whole point — it shows the shape of the day, not just its
+          // average, so a model that was fine this morning and is failing now
+          // cannot hide behind a healthy-looking mean.
+          h('div', { className: 'ofm_perf' },
+            h('dl', { className: 'ofm_perfstats' },
+              h('div', { className: 'ofm_perfcol status' },
+                h('dt', { className: 'ofm_perflabel', title: t('perf.rateTitle') },
+                  h('span', null, t('perf.rate')),
+                  h('span', { className: 'ofm_perfnum' }, `${perf.rate.toFixed(2)}%`)),
+                h('dd', { className: 'ofm_perfbars', title: t('perf.barsTitle'), role: 'img',
+                  'aria-label': t('perf.barsTitle') },
+                  (perf.ticks ?? []).map((tick, i) => h('span', {
+                    key: i, className: 'ofm_perfbar ' + perfTone(tick),
+                  })))),
+              h('div', { className: 'ofm_perfcol value' },
+                h('dt', { className: 'ofm_perflabel' }, t('perf.latency')),
+                h('dd', { className: 'ofm_perfnum wide' }, formatLatency(perf.latencyMs))),
+              h('div', { className: 'ofm_perfcol value' },
+                h('dt', { className: 'ofm_perflabel' }, t('perf.speed')),
+                h('dd', { className: 'ofm_perfnum wide' }, formatSpeed(perf.speed)))),
+            h('button', {
+              type: 'button', className: 'ofm_perfmore', 'aria-expanded': perfOpen ? 'true' : 'false',
+              onClick: () => setPerfOpen(open => !open),
+            }, perfOpen ? t('perf.less') : t('perf.more'), h('span', { className: 'ofm_perfchev' }, perfOpen ? '▴' : '▾')),
+            // The window the figures describe. Without it a reader has to guess
+            // whether "92%" is this hour or the whole day — and the bar's shape
+            // is only meaningful once you know how far back it reaches.
+            h('p', { className: 'ofm_perfnote' },
+              t('perf.windowNote').replace('{h}', String(perf.windowHours ?? 24)))),
+          perfOpen ? h(PerfCharts, { modelId: m.id, t }) : null),
         onVisibility === undefined ? null : h('div', { className: 'ofm_sec' },
           h(Switch, { checked: m.hiddenByUser !== true, label: t('visibility.showModel'),
             disabled: busy || m.hiddenByGroup === true, onChange: () => onVisibility(m) }),
@@ -3230,8 +3727,193 @@ window.__ModuleLoader__.load({
           bench?.result === undefined ? null : h('span', { className: 'ofm_note' }, bench.result)))
     }
 
+    /**
+     * The site's own per-model performance figures, for the roster's capsules.
+     *
+     * One read per roster mount, keyed by catalog id. It is best-effort by
+     * design: a failure leaves the map empty and every card renders exactly as
+     * it did before this feature — a card must never fail to draw because a
+     * metrics endpoint was slow. The server hop exists because the site's
+     * endpoint sends no CORS headers (see index.js `/perf`).
+     */
+    function usePerfFigures() {
+      const [figures, setFigures] = useState({})
+      useEffect(() => {
+        let alive = true
+        api('/perf').then(payload => {
+          if (!alive) return
+          const models = payload?.models
+          setFigures(models !== null && typeof models === 'object' ? models : {})
+        }).catch(() => { /* no figures: every card renders without a capsule */ })
+        return () => { alive = false }
+      }, [])
+      return figures
+    }
+
+    /**
+     * The panel 详情 opens: the site's two trend charts.
+     *
+     * Latency over time (blue) and availability over time (green, with the
+     * sub-band samples marked red). Both read one hourly series; when the site
+     * has none, a single line says so rather than an empty box.
+     */
+    function PerfCharts(props) {
+      const { modelId, t } = props
+      const { status, series } = usePerfSeries(modelId, true)
+      if (status === 'loading') return h('p', { className: 'ofm_perfnote' }, t('perf.loading'))
+      if (series === null) return h('p', { className: 'ofm_perfnote' }, t('perf.noSeries'))
+      return h('div', { className: 'ofm_charts' },
+        h('div', { className: 'ofm_chartblock' },
+          h('div', { className: 'ofm_charthead' },
+            h('span', { className: 'ofm_charttitle' }, t('perf.latencyTrend')),
+            h('span', { className: 'ofm_chartsub' }, t('perf.latencySub'))),
+          h(PerfTrendChart, {
+            points: series, pick: point => point.latencyMs, min: 0, unit: ' ms',
+            color: '#2563eb', t, label: t('perf.latencyTrend'),
+          })),
+        h('div', { className: 'ofm_chartblock' },
+          h('div', { className: 'ofm_charthead' },
+            h('span', { className: 'ofm_charttitle' }, t('perf.rateTrend')),
+            h('span', { className: 'ofm_chartsub' }, t('perf.rateSub'))),
+          h(PerfTrendChart, {
+            points: series, pick: point => point.rate, min: 0, max: 100, unit: '%',
+            color: '#10b981', t, label: t('perf.rateTrend'),
+            // The site marks a sub-band sample in the error colour; a dip is
+            // the whole reason this chart exists beside the average.
+            tone: point => (point.rate !== null && point.rate < 90 ? '#ef4444' : '#10b981'),
+          })))
+    }
+
+    /**
+     * One model's hourly series, fetched when its 详情 is opened.
+     *
+     * Lazy on purpose: the roster shows twelve strips, and the charts behind
+     * them would cost twelve extra requests to draw something nobody has asked
+     * to see. `enabled` is false until the card expands.
+     */
+    function usePerfSeries(modelId, enabled) {
+      const [state, setState] = useState({ status: 'idle', series: null })
+      useEffect(() => {
+        if (enabled !== true || typeof modelId !== 'string' || modelId === '') return undefined
+        let alive = true
+        setState({ status: 'loading', series: null })
+        api(`/perf/series?model=${encodeURIComponent(modelId)}`, { timeout: 12000 }).then(payload => {
+          if (!alive) return
+          const series = Array.isArray(payload?.series) ? payload.series : null
+          setState({ status: series === null ? 'none' : 'ready', series })
+        }).catch(() => { if (alive) setState({ status: 'none', series: null }) })
+        return () => { alive = false }
+      }, [modelId, enabled])
+      return state
+    }
+
+    /**
+     * The site's two trend charts, drawn as SVG.
+     *
+     * The site renders them to a canvas; SVG is used here so the lines stay
+     * crisp at any density and the theme's own text colours apply. The shape
+     * matches: 60px of Y-axis labels, horizontal gridlines, a line with a dot
+     * per sample, and hour labels along the bottom. The availability chart
+     * marks the samples that fell below the healthy band in the error colour,
+     * which is how the site shows an incident at a glance.
+     */
+    function PerfTrendChart(props) {
+      const { points, pick, min, max, unit, color, t, tone } = props
+      const W = 300
+      const H = 116
+      const pad = { left: 34, right: 6, top: 8, bottom: 18 }
+      const rows = points.filter(point => pick(point) !== null && pick(point) !== undefined)
+      if (rows.length < 2) return h('p', { className: 'ofm_perfnote' }, t('perf.noSeries'))
+      const lo = min === undefined ? 0 : min
+      const hi = max === undefined ? Math.max(...rows.map(pick)) : max
+      // Five gridlines on a round ladder, the way the site labels its axis
+      // (0 / 60k / 120k / 180k / 240k / 300k) — not the raw peak, which would
+      // print 20303 and 60908. The line scales to the same top the axis shows,
+      // so a point never floats above its own gridline.
+      const top = max === undefined ? niceCeil(hi) : hi
+      const span = top - lo || 1
+      const x = i => pad.left + (i / (rows.length - 1)) * (W - pad.left - pad.right)
+      const y = v => pad.top + (1 - (v - lo) / span) * (H - pad.top - pad.bottom)
+      const path = rows.map((point, i) => `${i === 0 ? 'M' : 'L'}${x(i).toFixed(1)},${y(pick(point)).toFixed(1)}`).join(' ')
+      const ticks = Array.from({ length: 5 }, (_, i) => lo + (span * i) / 4)
+      const tickLabel = value => unit === '%'
+        ? `${Math.round(value)}%`
+        : value >= 1000 ? `${Math.round(value / 1000)}k ms` : `${Math.round(value)} ms`
+      const hourLabel = ts => {
+        const d = new Date(ts * 1000)
+        return `${String(d.getHours()).padStart(2, '0')}:00`
+      }
+      return h('svg', { className: 'ofm_chart', viewBox: `0 0 ${W} ${H}`, role: 'img',
+        'aria-label': props.label },
+        ticks.map((tick, i) => h('g', { key: i },
+          h('line', { x1: pad.left, x2: W - pad.right, y1: y(tick), y2: y(tick),
+            className: 'ofm_chartgrid', strokeDasharray: i === 0 ? undefined : '3 3' }),
+          h('text', { x: pad.left - 5, y: y(tick) + 3, className: 'ofm_chartaxis', textAnchor: 'end' },
+            tickLabel(tick)))),
+        h('path', { d: path, fill: 'none', stroke: color, strokeWidth: 1.6,
+          strokeLinejoin: 'round', strokeLinecap: 'round' }),
+        rows.map((point, i) => h('circle', {
+          key: i, cx: x(i), cy: y(pick(point)), r: 1.9,
+          fill: tone === undefined ? color : tone(point),
+          className: 'ofm_chartdot',
+        })),
+        // Four hour labels across the window, as the site spaces them.
+        [0, Math.floor(rows.length / 3), Math.floor((rows.length * 2) / 3), rows.length - 1].map((idx, i) => h('text', {
+          key: `x${i}`, x: x(idx), y: H - 5, className: 'ofm_chartaxis',
+          textAnchor: i === 0 ? 'start' : i === 3 ? 'end' : 'middle',
+        }, hourLabel(rows[idx].ts))))
+    }
+
+    /**
+     * One bar's colour, using the site's own thresholds.
+     *
+     * The model square colours each hourly tick emerald at 99 and above, amber
+     * from 90, red below — and grey for an hour with no sample. Copying those
+     * cut-offs is the point: the same day must look the same in both places.
+     */
+    function perfTone(rate) {
+      if (rate === null || rate === undefined) return 'none'
+      const n = Number(rate)
+      if (!Number.isFinite(n)) return 'none'
+      if (n >= 99) return 'good'
+      if (n >= 90) return 'fair'
+      return 'poor'
+    }
+
+    /**
+     * The next round number at or above `value`, for an axis top.
+     *
+     * 60908 → 70000, 300000 → 300000, 96 → 100. One significant-figure step
+     * above the data, so the top gridline is always a number a reader can hold
+     * in their head rather than the exact peak of the sample.
+     */
+    function niceCeil(value) {
+      const n = Number(value)
+      if (!Number.isFinite(n) || n <= 0) return 1
+      const magnitude = 10 ** Math.floor(Math.log10(n))
+      for (const step of [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10]) {
+        const candidate = step * magnitude
+        if (candidate >= n) return candidate
+      }
+      return 10 * magnitude
+    }
+
+    /** The strip's latency figure, in the site's own spelling (`144.96s`). */
+    function formatLatency(ms) {
+      const n = Number(ms)
+      if (!Number.isFinite(n) || n < 0) return '—'
+      return `${(n / 1000).toFixed(2)}s`
+    }
+
+    /** The strip's throughput figure, in the site's own spelling (`55.9t/s`). */
+    function formatSpeed(tps) {
+      const n = Number(tps)
+      if (!Number.isFinite(n) || n < 0) return '—'
+      return `${n.toFixed(1)}t/s`
+    }
+
     function isFreePoolModel(model) {
-      return !model.channel || model.channel === 'anonymous' || model.channel === 'kilo'
+      return !model.channel || model.channel === 'anonymous' || model.channel === 'kilo' || model.channel === 'extension'
     }
 
     function freePoolView(data) {
@@ -3256,6 +3938,7 @@ window.__ModuleLoader__.load({
 
     function Roster(props) {
       const { summary, t, onBench, benches = {}, auth, eacLogin, only, onApply, busy } = props
+      const perfFigures = usePerfFigures()
       // 免费页与水位采用相同范围：匿名免费模型和 Kilo；其他付费来源留在各自页面。
       const roster = only === undefined ? summary.catalog
         : only === 'eac' ? summary.catalog.filter(m => m.channel === 'eac')
@@ -3281,6 +3964,7 @@ window.__ModuleLoader__.load({
           h('div', { className: 'ofm_grid' }, list.map(m => h(ModelCard, {
             key: m.id, model: m, t, onBench, locked: m.channel === 'eac' && locked, eacLogin,
             onVisibility: toggleModel, busy,
+            perf: perfFigures[m.id],
             bench: { running: benches[m.id]?.running === true, ...benches[m.id]?.result === undefined ? {} : { result: benches[m.id].result } },
           }))))
       // The lane closed at the gate is the one "no EAC models" case the page can
@@ -4385,6 +5069,178 @@ window.__ModuleLoader__.load({
           })),
         picks.status === 'error' ? h('p', { className: 'ofm_reconote' }, t('picks.liveFailed')) : null,
         h('p', { className: 'ofm_reconote' }, t('picks.foot')))
+    }
+
+    // ── 反馈与许愿 ────────────────────────────────────────────────────────────
+    /**
+     * Sign in with GitHub, then file one problem report or feature wish.
+     *
+     * Sign-in is required rather than optional: an anonymous report cannot be
+     * followed up when the fix lands, and there is no way to tell one person's
+     * complaint from the same complaint arriving ten times.
+     *
+     * The token never reaches this page — every call goes through the host's
+     * `/feedback/*` routes, which keep it in the settings file on this machine
+     * and answer only `{signedIn, login}`. So even a script injected into the
+     * page cannot steal a credential that submits as the user.
+     */
+    function FeedbackPage(props) {
+      const { t } = props
+      const [auth, setAuth] = useState({ signedIn: false, login: '' })
+      const [login, setLogin] = useState(undefined)
+      const [kind, setKind] = useState('bug')
+      const [title, setTitle] = useState('')
+      const [detail, setDetail] = useState('')
+      const [busy, setBusy] = useState('')
+      const [error, setError] = useState('')
+      const [status, setStatus] = useState('')
+      const [sent, setSent] = useState('')
+      // 轮询定时器与"还挂在页面上吗"的标记：设备码轮询会跨越多秒，页面切走
+      // 之后 setState 属于泄漏的更新，清理函数必须把它们都停掉。
+      const pollTimer = useRef(undefined)
+      const live = useRef(true)
+      useEffect(() => () => { live.current = false; clearTimeout(pollTimer.current) }, [])
+
+      const readAuth = useCallback(async () => {
+        try {
+          const value = await api('/feedback')
+          if (live.current) setAuth(value)
+        } catch { /* 状态读取失败不该挡住表单；登录按钮会再报一次 */ }
+      }, [])
+      useEffect(() => { void readAuth() }, [readAuth])
+
+      const signIn = async () => {
+        if (busy) return
+        setBusy('signin'); setError(''); setStatus('')
+        try {
+          const value = await post('/feedback/start', undefined, 30_000)
+          if (!live.current) return
+          setLogin(value)
+          setStatus(t('fb.opened'))
+          // 授权页在新标签打开：本页要保持可见，验证码还要照着输。
+          try { window.open(value.verifyUrl, '_blank', 'noopener,noreferrer') } catch { /* 弹窗被拦，页面里还有链接 */ }
+        } catch (reason) { if (live.current) setError(String(reason?.message ?? reason)) }
+        finally { if (live.current) setBusy('') }
+      }
+
+      // 只在登录流程进行中轮询，成功后立刻停 —— 常驻轮询会让一台已经登录的机器
+      // 每隔几秒向外部服务发一次毫无意义的请求。
+      useEffect(() => {
+        if (login === undefined) return undefined
+        let cancelled = false
+        const tick = async () => {
+          try {
+            const value = await post('/feedback/poll', { session: login.session }, 30_000)
+            if (cancelled || !live.current) return
+            if (value.status === 'ok') {
+              setLogin(undefined); setAuth({ signedIn: true, login: value.login ?? '' })
+              setStatus(t('fb.signedIn')); return
+            }
+            if (value.status === 'expired') { setLogin(undefined); setError(t('fb.expired')); return }
+            if (value.status === 'denied') { setLogin(undefined); setError(t('fb.denied')); return }
+            pollTimer.current = setTimeout(() => { void tick() }, 3000)
+          } catch (reason) {
+            if (cancelled || !live.current) return
+            setLogin(undefined); setError(String(reason?.message ?? reason))
+          }
+        }
+        pollTimer.current = setTimeout(() => { void tick() }, 3000)
+        return () => { cancelled = true; clearTimeout(pollTimer.current) }
+      }, [login, t])
+
+      const signOut = async () => {
+        setBusy('signout'); setError(''); setStatus('')
+        try {
+          const value = await post('/feedback/signout')
+          if (live.current) { setAuth(value); setStatus(t('fb.signedOut')); setSent('') }
+        } catch (reason) { if (live.current) setError(String(reason?.message ?? reason)) }
+        finally { if (live.current) setBusy('') }
+      }
+
+      const submit = async () => {
+        if (busy) return
+        setBusy('submit'); setError(''); setStatus(''); setSent('')
+        try {
+          const result = await post('/feedback/submit', {
+            kind, title, detail, platform: navigator.platform, page: 'feedback',
+          }, 30_000)
+          if (!live.current) return
+          setTitle(''); setDetail(''); setSent(result.id)
+          setStatus(t('fb.submitted'))
+        } catch (reason) {
+          if (!live.current) return
+          // 401 是反馈令牌失效（收集端重启丢了内存会话，或到期），不是管理会话
+          // 失效：留在本页、把登录态重置，正文留在输入框里，不必重打一遍。
+          const stale = /登录已失效|sign-in has lapsed/.test(String(reason?.message ?? ''))
+          if (stale) {
+            setAuth({ signedIn: false, login: '' })
+            setError(t('fb.stale'))
+            return
+          }
+          setError(String(reason?.message ?? reason))
+        }
+        finally { if (live.current) setBusy('') }
+      }
+
+      const canSubmit = title.trim() !== '' && detail.trim() !== '' && busy === ''
+      return h('div', { className: 'ofm_page' },
+        h(PageHero, { title: t('fb.title'), sub: t('fb.sub') },
+          auth.signedIn
+            ? h(Button, { onClick: () => void signOut(), disabled: busy !== '' },
+              t('fb.signOut').replace('{login}', auth.login))
+            : h(Button, { onClick: () => void signIn(), disabled: busy !== '' },
+              t('fb.signIn'))),
+
+        error !== '' ? h('div', { className: 'ofm_callout ofm_error' }, h('div', null, error)) : null,
+        status !== '' ? h('div', { className: 'ofm_callout' }, h('div', null, status)) : null,
+
+        login !== undefined ? h('div', { className: 'ofm_panel ofm_fbcode' },
+          h('div', { className: 'ofm_fbcodeval' }, login.userCode),
+          h('p', { className: 'ofm_note' }, t('fb.code')),
+          h('a', { className: 'ofm_linkbtn', href: login.verifyUrl, target: '_blank', rel: 'noopener noreferrer' },
+            t('fb.openVerify')),
+          h('p', { className: 'ofm_note' }, t('fb.waiting'))) : null,
+
+        !auth.signedIn && login === undefined ? h('div', { className: 'ofm_panel ofm_fbgate' },
+          h('h3', null, t('fb.gateTitle')),
+          h('p', { className: 'ofm_note' }, t('fb.gateBody')),
+          h(Button, { onClick: () => void signIn(), disabled: busy !== '' }, t('fb.signIn'))) : null,
+
+        auth.signedIn ? h(Section, { title: t('fb.title'), hint: t('fb.note') },
+          h('div', { className: 'ofm_panel ofm_fbform' },
+            h('div', { className: 'ofm_row ofm_fbsegments', role: 'group', 'aria-label': t('fb.title') },
+              h('button', {
+                type: 'button', className: 'ofm_fbseg', 'data-on': kind === 'bug' ? 'true' : 'false',
+                'aria-pressed': kind === 'bug' ? 'true' : 'false', disabled: busy !== '',
+                onClick: () => setKind('bug'),
+              }, t('fb.kind.bug')),
+              h('button', {
+                type: 'button', className: 'ofm_fbseg', 'data-on': kind === 'wish' ? 'true' : 'false',
+                'aria-pressed': kind === 'wish' ? 'true' : 'false', disabled: busy !== '',
+                onClick: () => setKind('wish'),
+              }, t('fb.kind.wish'))),
+            h('label', { className: 'ofm_fbfield' },
+              h('span', null, t('fb.titleField')),
+              h('input', {
+                className: 'ofm_input', value: title, maxLength: 120, disabled: busy !== '',
+                placeholder: t(kind === 'bug' ? 'fb.titlePlaceholderBug' : 'fb.titlePlaceholderWish'),
+                onChange: event => setTitle(event.target.value),
+              })),
+            h('label', { className: 'ofm_fbfield' },
+              h('span', null, t('fb.detailField')),
+              h('textarea', {
+                className: 'ofm_input ofm_fbtext', rows: 9, value: detail, maxLength: 8000, disabled: busy !== '',
+                placeholder: t(kind === 'bug' ? 'fb.detailPlaceholderBug' : 'fb.detailPlaceholderWish'),
+                onChange: event => setDetail(event.target.value),
+              })),
+            h('div', { className: 'ofm_row ofm_fbfoot' },
+              h(Pill, null, `${t('fb.version')} v${props.version ?? ''}`),
+              h('span', { className: 'ofm_note' }, `${detail.length} / 8000`)),
+            sent !== '' ? h('p', { className: 'ofm_fbreceipt', role: 'status' },
+              t('fb.sent').replace('{id}', sent)) : null,
+            h('div', { className: 'ofm_row' },
+              h(Button, { onClick: () => void submit(), disabled: !canSubmit },
+                busy === 'submit' ? '…' : t('fb.submit'))))) : null)
     }
 
     // ── EAC router ────────────────────────────────────────────────────────
@@ -6872,7 +7728,7 @@ window.__ModuleLoader__.load({
     // upgrader triggers — comes back to the page the user was reading.
     const EFFECTS_KEY = 'ofm.visualEffects'
     const TAB_KEY = 'ofm.tab'
-    const TABS = ['free', 'eac', 'channels', 'aggregate', 'workspace', 'saver', 'routing', 'ledger', 'logs', 'gateway', 'upgrade', 'picks']
+    const TABS = ['free', 'eac', 'channels', 'aggregate', 'workspace', 'extensions', 'saver', 'routing', 'ledger', 'logs', 'gateway', 'upgrade', 'picks', 'feedback']
     const WORKSPACE_CSS = `
       .who{min-width:0}
       .who .name,.nm .n,.lib-path{white-space:normal!important;overflow-wrap:anywhere;overflow:visible!important;text-overflow:clip!important}
@@ -7169,6 +8025,7 @@ window.__ModuleLoader__.load({
         ['channels', t('nav.tab.channels'), CHANNEL_PROVIDERS.length],
         ['aggregate', t('nav.tab.aggregate'), data.catalog.filter(m => m.channel === 'aggregate').length],
         ['workspace', t('nav.tab.workspace'), data.catalog.filter(m => m.channel === 'subscription').length],
+        ['extensions', t('nav.tab.extensions'), (data.extensions?.installed ?? []).length],
         ['saver', t('nav.tab.saver'), null],
         ['routing', t('nav.tab.routing'), data.catalog.filter(m => m.channel === 'combo').length],
         ['ledger', t('nav.tab.ledger'), null],
@@ -7176,6 +8033,7 @@ window.__ModuleLoader__.load({
         ['gateway', t('nav.tab.gateway'), null],
         ['upgrade', t('nav.tab.upgrade'), null],
         ['picks', t('nav.tab.picks'), null],
+        ['feedback', t('nav.tab.feedback'), null],
       ]
       const nav = h('nav', { className: 'ofm_nav' },
         h('span', { className: 'ofm_navbrand' },
@@ -7205,7 +8063,9 @@ window.__ModuleLoader__.load({
           h(StarButton, { t })))
 
       const page = tab === 'workspace'
-        ? h(WorkspacePage, { t, summary, section: workspaceSection, onSelect: setWorkspaceSection })        : tab === 'channels'
+        ? h(WorkspacePage, { t, summary, section: workspaceSection, onSelect: setWorkspaceSection })        : tab === 'extensions'
+          ? h(ExtensionsPage, { t, onChanged: summary.reload })
+          : tab === 'channels'
         ? h(ChannelsPage, { t, ctx, summary })
         : tab === 'aggregate'
           ? h(AggregatePage, { t, summary })
@@ -7223,6 +8083,8 @@ window.__ModuleLoader__.load({
                       ? h(UpgradePage, { t, settings: data.settings, onApply: apply, busy })
                     : tab === 'picks'
                       ? h(PicksPage, { t, effects })
+                    : tab === 'feedback'
+                      ? h(FeedbackPage, { t, version: data.version })
                     : tab === 'eac'
                       ? h(EacPage, { t, data, counts, summary, stats, eacAuth, setEacAuth, eacLogin, busy, catalogBusy, apply, bench, benches, refresh, reprobe })
                       : h(FreePage, { t, data, counts, summary, stats, eacAuth, eacLogin, busy, catalogBusy, apply, bench, benches, refresh, reprobe })
@@ -7269,6 +8131,10 @@ window.__ModuleLoader__.load({
               h('p', { className: 'ofm_pagesub' }, t('free.sub'))),
             h('div', { className: 'ofm_pills' },
               h(Pill, { strong: true, tone: data.settings.enabled !== false ? 'ok' : 'err' }, data.settings.enabled !== false ? t('pref.enabled') : 'off'),
+              /* Environment readiness: a missing Bun silently kills the official
+                 free lane's inference — surface it where the lane lives. */
+              data.bun === false ? h('span', { title: t('ext.bunHint') },
+                h(Pill, { strong: true, tone: 'err' }, t('ext.bunMissing'))) : null,
               h(Pill, null, `${t('pref.egress')} ${data.egress?.country ?? data.egress?.ip ?? '—'}`),
               h(Pill, null, `${t('pref.probedAt')} ${ago(data.probedAt, t.locale)}`))),
           h('div', { className: 'ofm_tankrow' },
@@ -7304,6 +8170,560 @@ window.__ModuleLoader__.load({
         h(Section, { title: t('section.egress'), hint: t('section.egressHint') }, h(Egress, { settings: data.settings, t, onApply: apply, busy })),
         h(Section, { title: t('section.prefs'), hint: t('section.prefsHint') }, h(Preferences, { summary: data, t, onApply: apply, busy })),
         h(Section, { title: t('section.news'), hint: t('section.newsHint') }, h(NewsPanel, { t })))
+    }
+
+    /** The extension marketplace: discover, installed, and the safety contract. */
+    function ExtensionsPage({ t, onChanged }) {
+      const [state, setState] = useState({ status: 'loading' })
+      const [busyId, setBusyId] = useState('')
+      const [detail, setDetail] = useState(undefined)
+      const [tab, setTab] = useState('discover')
+      const [query, setQuery] = useState('')
+      const [typeFilter, setTypeFilter] = useState('all')
+      const [sortKey, setSortKey] = useState('curated')
+      const [updatingAll, setUpdatingAll] = useState(false)
+      /* 2.10 增补：自动更新开关与它的 soak 提示、索引来源、最近操作。
+         `updates` 由后端在每次索引读取时算好（seenAt 记第一次看到新版本），
+         页面只读；写开关走既有 /settings 路由。 */
+      const [autoUpdateBusy, setAutoUpdateBusy] = useState(false)
+      /* Tag browsing (magpie's category gesture): click a tag chip, the grid
+         narrows to it. `updateProgress` counts a running 全部更新; `selfTests`
+         keeps each card's latest selfTest verdict. */
+      const [tagFilter, setTagFilter] = useState('')
+      const [updateProgress, setUpdateProgress] = useState(null)
+      const [selfTests, setSelfTests] = useState({})
+      const searchRef = useRef(null)
+      const load = useCallback(() => {
+        /* Re-reads keep the previous payload so a refresh (or the read after an
+           install) does not blank the page out mid-flight. */
+        setState(current => ({ ...current, status: 'loading' }))
+        api('/extensions', { timeout: 20_000 })
+          .then(payload => setState({ status: 'ready', ...payload }))
+          .catch(error => setState(current => ({ ...current, status: 'error', error: String(error?.message ?? error) })))
+      }, [])
+      useEffect(() => { load() }, [load])
+      /* `/` focuses the search box — the marketplace's first gesture is search,
+         and the pointer should not be required for it. */
+      useEffect(() => {
+        const onKey = event => {
+          if (event.key !== '/' || event.defaultPrevented === true) return
+          const target = event.target
+          const tag = target !== null && typeof target === 'object' ? String(target.tagName ?? '').toLowerCase() : ''
+          if (tag === 'input' || tag === 'textarea' || tag === 'select' || target?.isContentEditable === true) return
+          const input = searchRef.current
+          if (input === null || input === undefined) return
+          event.preventDefault()
+          input.focus()
+        }
+        window.addEventListener('keydown', onKey)
+        return () => window.removeEventListener('keydown', onKey)
+      }, [])
+      /* A mutation's response refreshes `installed`, but each registry row also
+         carries its own installed/update/enabled copy — left alone, a card keeps
+         its stale "update ready" tag (or stays on Install) until a full reload. */
+      const patchRegistryRow = (id, patch) => setState(current => {
+        const registry = current.registry
+        if (registry === null || registry === undefined) return current
+        return { ...current, registry: { ...registry, plugins: registry.plugins.map(row => row.id === id ? { ...row, ...patch } : row) } }
+      })
+      const act = async (path, body, refresh = true) => {
+        setBusyId(body?.id ?? path)
+        try {
+          const payload = await post(path, body, 120_000)
+          if (refresh) setState(current => ({ ...current, ...payload, status: 'ready' }))
+          else load()
+          if (path === '/extensions/install' && payload?.record !== undefined) {
+            patchRegistryRow(payload.record.id, {
+              installed: true, installedVersion: payload.record.version, updateAvailable: false,
+              enabled: payload.record.enabled === true, state: payload.record.state,
+            })
+          } else if (path === '/extensions/uninstall' && typeof body?.id === 'string') {
+            patchRegistryRow(body.id, { installed: false, enabled: false, updateAvailable: false, state: 'stopped' })
+          } else if (path === '/extensions/toggle' && payload?.record !== undefined) {
+            patchRegistryRow(payload.record.id, { enabled: payload.record.enabled === true, state: payload.record.state })
+          }
+          /* The nav badge and the free-page roster read the summary — refresh it
+             so an install/uninstall is reflected everywhere, not just here. */
+          onChanged?.()
+          return payload
+        } catch (error) {
+          showToast({ title: t('ext.failed'), body: String(error?.message ?? error), tone: 'warn' })
+          throw error
+        } finally { setBusyId('') }
+      }
+      const installFromDetail = async id => {
+        try { await act('/extensions/install', { id }); setDetail(undefined) } catch { /* the toast already said why */ }
+      }
+      const installed = state.installed ?? []
+      const registry = state.registry
+      const registryById = new Map((registry?.plugins ?? []).map(plugin => [plugin.id, plugin]))
+      const needle = query.trim().toLowerCase()
+      const discover = (registry?.plugins ?? []).filter(plugin => {
+        if (typeFilter !== 'all' && plugin.type !== typeFilter) return false
+        /* Tags ride the haystack: "kilo" should find the entry that is tagged kilo
+           even when its name never says it. */
+        if (needle !== '' && !`${plugin.name} ${plugin.id} ${plugin.summary ?? ''} ${(plugin.tags ?? []).join(' ')}`.toLowerCase().includes(needle)) return false
+        if (tagFilter !== '' && !(plugin.tags ?? []).includes(tagFilter)) return false
+        return true
+      })
+      if (sortKey === 'newest') discover.sort((a, b) => String(b.publishedAt ?? '').localeCompare(String(a.publishedAt ?? '')))
+      else if (sortKey === 'name') discover.sort((a, b) => String(a.name ?? '').localeCompare(String(b.name ?? '')))
+      const indexRows = registry?.plugins ?? []
+      const channelCount = indexRows.filter(plugin => plugin.type === 'channel').length
+      /* magpie's Installed tab: what is outdated floats to the top with a count
+         and an "update all" beside it, so a stale shelf never hides. */
+      const updates = installed.filter(record => registryById.get(record.id)?.updateAvailable === true)
+      const installedSorted = [...installed].sort((a, b) => {
+        const ua = registryById.get(a.id)?.updateAvailable === true ? 0 : 1
+        const ub = registryById.get(b.id)?.updateAvailable === true ? 0 : 1
+        if (ua !== ub) return ua - ub
+        return String(b.installedAt ?? '').localeCompare(String(a.installedAt ?? ''))
+      })
+      /* soak 状态：updates[] 由后端在索引读取时算好，id 对齐。 */
+      const updatesById = new Map((state.updates ?? []).map(update => [update.id, update]))
+      const soakHint = plugin => {
+        const update = updatesById.get(plugin.id)
+        if (update === undefined) return ''
+        if (update.ready === true) return t('ext.soakReady')
+        return t('ext.soakWaiting').replace('{h}', String(Math.max(1, Math.ceil(update.soakRemainingMs / 3_600_000))))
+      }
+      const auditLabel = action => ({ install: t('ext.auditInstall'), 'install-local': t('ext.auditInstallLocal'), uninstall: t('ext.auditUninstall'), 'set-enabled': t('ext.auditEnabled'), config: t('ext.auditConfig'), secret: t('ext.auditSecret'), 'self-test': t('ext.selfTest'), 'auto-update': t('ext.auditAutoUpdate'), 'registry-refresh': t('ext.auditRegistry') })[action] ?? action
+      const sourceLabel = meta => {
+        if (meta?.source === 'bundled') return t('ext.sourceBundled')
+        const source = String(meta?.source ?? '')
+        if (source === '') return ''
+        try { return `${new URL(source).hostname}（缓存）` } catch { return source }
+      }
+
+      const updateAll = async () => {
+        if (updatingAll === true || updates.length === 0) return
+        setUpdatingAll(true)
+        setUpdateProgress({ done: 0, total: updates.length })
+        try {
+          let done = 0
+          for (const record of updates) {
+            try { await act('/extensions/install', { id: record.id }) } catch { /* one refusal must not strand the rest */ }
+            done += 1
+            setUpdateProgress({ done, total: updates.length })
+          }
+        } finally { setUpdatingAll(false); setUpdateProgress(null) }
+      }
+      /* 自动更新开关：写回 /settings 的持久位；页面值以响应的 settings 为准。 */
+      const toggleAutoUpdate = async () => {
+        if (autoUpdateBusy === true) return
+        setAutoUpdateBusy(true)
+        try {
+          const next = state.autoUpdate !== true
+          await post('/settings', { autoUpdateExtensions: next }, 15_000)
+          setState(current => ({ ...current, autoUpdate: next }))
+        } catch (error) {
+          showToast({ title: t('ext.failed'), body: String(error?.message ?? error), tone: 'warn' })
+        } finally { setAutoUpdateBusy(false) }
+      }
+      /* 迁移助手：导出已安装清单（id、版本、启停、配置；密钥永不导出）。 */
+      const exportShelf = () => {
+        const rows = state.installed ?? []
+        if (rows.length === 0) return
+        const shelf = {
+          version: 1, exportedAt: new Date().toISOString(),
+          plugins: rows.map(record => ({ id: record.id, version: record.version, enabled: record.enabled === true, config: record.values ?? {} })),
+        }
+        const blob = new Blob([JSON.stringify(shelf, null, 2)], { type: 'application/json' })
+        const url = URL.createObjectURL(blob)
+        const link = document.createElement('a')
+        link.href = url
+        link.download = `ofm-extensions-${new Date().toISOString().slice(0, 10)}.json`
+        link.click()
+        URL.revokeObjectURL(url)
+        showToast({ title: t('ext.exportDone'), holdMs: 6000 })
+      }
+      /* 迁移助手：按清单逐个重装并恢复配置与启停；一个失败不拖累其余。 */
+      const importShelf = async file => {
+        let shelf
+        try { shelf = JSON.parse(await file.text()) } catch { shelf = null }
+        const entries = shelf !== null && typeof shelf === 'object' && Array.isArray(shelf?.plugins)
+          ? shelf.plugins.filter(row => row !== null && typeof row === 'object' && typeof row.id === 'string')
+          : []
+        if (entries.length === 0) { showToast({ title: t('ext.importInvalid'), tone: 'warn' }); return }
+        let restored = 0
+        let failed = 0
+        for (const entry of entries) {
+          try {
+            await post('/extensions/install', { id: entry.id }, 120_000)
+            if (entry.config !== null && typeof entry.config === 'object' && !Array.isArray(entry.config)) {
+              await post('/extensions/config', { id: entry.id, values: entry.config }, 30_000)
+            }
+            if (entry.enabled === true) await post('/extensions/toggle', { id: entry.id, enabled: true }, 60_000)
+            restored += 1
+          } catch { failed += 1 }
+        }
+        await load()
+        showToast({ title: t('ext.importDone').replace('{ok}', String(restored)).replace('{fail}', failed > 0 ? t('ext.importFail').replace('{n}', String(failed)) : ''), tone: failed > 0 ? 'warn' : undefined, holdMs: 8000 })
+      }
+
+      /* The manifest's optional selfTest(ctx), run from the card. The verdict is
+         data, not a toast: a failed hook paints ✗ + its reason on the card. */
+      const runSelfTest = async id => {
+        setSelfTests(current => ({ ...current, [id]: { busy: true } }))
+        try {
+          const verdict = await post('/extensions/self-test', { id }, 20_000)
+          setSelfTests(current => ({ ...current, [id]: { ok: verdict?.ok === true, message: verdict?.message ?? '' } }))
+        } catch (error) {
+          setSelfTests(current => ({ ...current, [id]: { ok: false, message: String(error?.message ?? error) } }))
+        }
+      }
+      const cardFor = (plugin, index = 0, filterable = false) => {
+        const record = installed.find(row => row.id === plugin.id)
+        const busy = busyId === plugin.id
+        const modelCount = plugin.models?.length ?? plugin.modelCount
+        const hasCover = plugin.cover !== null && plugin.cover !== undefined
+        const head = h('div', { className: 'ofm_exthead' },
+          extensionAvatar(plugin),
+          h('div', { className: 'ofm_exttitle' },
+            h('div', { className: 'ofm_cardhead' },
+              h('span', { className: 'ofm_cardname', title: plugin.name }, plugin.name),
+              h('span', { className: 'ofm_badge ok', title: t('ext.verifiedTitle') }, t('ext.verified')),
+              plugin.updateAvailable === true ? h('span', { className: 'ofm_hottag' }, t('ext.updateAvailable')) : null),
+            h('div', { className: 'ofm_id' }, `${plugin.id} · v${plugin.version} · ${plugin.author || '—'}`)))
+        const blurb = h('p', { className: 'ofm_note ofm_extblurb' }, plugin.summary || plugin.description || '')
+        const hostGate = plugin.installable === false
+        const hostHint = t('ext.requiresHost').replace('{v}', plugin.minHost ?? '')
+        const tagRow = h('div', { className: 'ofm_tags' },
+          h('span', { className: 'ofm_chantag' }, plugin.type === 'channel' ? t('ext.channel') : t('ext.enhancement')),
+          /* A silent lane takeover (kilo-free → the built-in Kilo) must be visible
+             where the user decides to install, not buried in the manifest. */
+          plugin.replaces ? h('span', { className: 'ofm_replacetag', title: t('ext.replaces').replace('{name}', plugin.replaces) }, t('ext.replaces').replace('{name}', plugin.replaces)) : null,
+          (plugin.tags ?? []).slice(0, 3).map(tag => filterable
+            ? h('button', { className: 'ofm_tag ofm_tagbtn', key: tag, type: 'button', title: t('ext.filterTag'), onClick: () => { setTab('discover'); setTagFilter(tag) } }, tag)
+            : h('span', { className: 'ofm_tag', key: tag }, tag)),
+          typeof modelCount === 'number' && modelCount > 0 ? h('span', { className: 'ofm_badge' }, t('ext.modelCount').replace('{n}', String(modelCount))) : null)
+        const acquire = label => h(Button, {
+          kind: 'primary', disabled: busy || hostGate, busy,
+          title: hostGate ? hostHint : undefined,
+          onClick: () => act('/extensions/install', { id: plugin.id }),
+        }, busy ? t('ext.installing') : label)
+        const action = record === undefined
+          ? hostGate
+            ? h('span', { className: 'ofm_badge throttled', title: hostHint }, hostHint)
+            : acquire(t('ext.install'))
+          : plugin.updateAvailable === true
+            ? acquire(t('ext.update'))
+            : h('span', { className: 'ofm_badge ok' }, t('ext.installed'))
+        const actions = h('div', { className: 'ofm_extfoot' },
+          h(Button, { onClick: () => setDetail(plugin) }, t('ext.detail')),
+          action)
+        if (record === undefined) {
+          return h('article', {
+            className: `ofm_card ofm_extcard ${plugin.type === 'channel' ? 'channel' : 'enhancement'}${hasCover ? ' hascover' : ''}`,
+            key: plugin.id, style: { '--i': String(index) },
+          }, h(ExtensionCover, { plugin }), head, blurb, tagRow, actions)
+        }
+        const fields = []
+        for (const field of record.config) {
+          if (field.type === 'toggle') {
+            fields.push(h('div', { className: 'ofm_row', key: field.key, style: { gap: 8 } },
+              h('span', { className: 'ofm_note', style: { minWidth: 90 } }, field.label),
+              h(Switch, {
+                checked: record.values?.[field.key] === true, label: field.label,
+                onChange: () => act('/extensions/config', { id: plugin.id, values: { [field.key]: !(record.values?.[field.key] === true) } }),
+              })))
+          } else if (field.type === 'select') {
+            // The manifest's option list is the whole truth: render it, save the
+            // pick the moment it changes.
+            const options = field.options ?? []
+            const current = String(record.values?.[field.key] ?? (options.includes(String(field.default)) ? field.default : options[0] ?? ''))
+            fields.push(h('div', { className: 'ofm_row', key: field.key, style: { gap: 8 } },
+              h('span', { className: 'ofm_note', style: { minWidth: 90 } }, field.label),
+              h('select', {
+                className: 'ofm_input', value: current, style: { minWidth: 140 },
+                onChange: event => {
+                  if (event.target.value !== current) act('/extensions/config', { id: plugin.id, values: { [field.key]: event.target.value } })
+                },
+              }, options.map(option => h('option', { key: option, value: option }, option)))))
+          } else {
+            const numeric = field.type === 'number'
+            fields.push(h('div', { className: 'ofm_row', key: field.key, style: { gap: 8 } },
+              h('span', { className: 'ofm_note', style: { minWidth: 90 } }, field.label),
+              h('input', {
+                className: 'ofm_input', type: field.type === 'password' ? 'password' : numeric ? 'number' : 'text', style: { minWidth: 140 },
+                defaultValue: record.values?.[field.key] ?? '', placeholder: field.type === 'password' ? t('ext.secretPlaceholder') : '',
+                onBlur: event => {
+                  const raw = event.target.value
+                  if (numeric && raw === '') return // untouched, not a zero
+                  const next = numeric ? Number(raw) : raw
+                  if (next !== (record.values?.[field.key] ?? '')) {
+                    act('/extensions/config', { id: plugin.id, values: { [field.key]: next } })
+                  }
+                },
+              })))
+          }
+        }
+        for (const key of record.permissions.secrets) {
+          const hint = record.secrets.find(row => row.key === key)?.hint ?? ''
+          fields.push(h('div', { className: 'ofm_row', key, style: { gap: 8 } },
+            h('span', { className: 'ofm_note', style: { minWidth: 90 } }, key),
+            h('input', {
+              className: 'ofm_input', type: 'password', style: { minWidth: 140 }, placeholder: t('ext.secretPlaceholder'),
+              onBlur: event => {
+                if (event.target.value !== '') {
+                  act('/extensions/secret', { id: plugin.id, key, value: event.target.value })
+                  event.target.value = ''
+                }
+              },
+            }),
+            h('span', { className: 'ofm_note' }, hint)))
+        }
+        const selfTest = selfTests[plugin.id]
+        const controls = h('div', { className: 'ofm_row' },
+          record.selfTestAvailable === true
+            ? h(Button, { disabled: busy || selfTest?.busy === true, busy: selfTest?.busy === true, onClick: () => runSelfTest(plugin.id) }, t('ext.selfTest'))
+            : null,
+          h(Button, { disabled: busy, busy, onClick: () => act('/extensions/toggle', { id: plugin.id, enabled: !(record.enabled === true) }) },
+            record.enabled === true ? t('ext.disable') : t('ext.enable')),
+          h(Button, {
+            danger: true, disabled: busy, busy,
+            onClick: () => { if (window.confirm(t('ext.confirmRemove').replace('{name}', plugin.name))) act('/extensions/uninstall', { id: plugin.id }) },
+          }, t('ext.uninstall')),
+          record.state !== 'ready' && record.enabled === true
+            ? h('span', { className: 'ofm_badge throttled', title: record.error }, t('ext.notRunning'))
+            : null,
+          selfTest !== undefined && selfTest.busy !== true
+            ? selfTest.ok === true
+              ? h('span', { className: 'ofm_badge ok', title: selfTest.message }, t('ext.selfTestOk'))
+              : h('span', { className: 'ofm_badge throttled', title: selfTest.message }, t('ext.selfTestFail'))
+            : null)
+        return h('article', {
+          className: `ofm_card ofm_extcard ${plugin.type === 'channel' ? 'channel' : 'enhancement'}${hasCover ? ' hascover' : ''}`,
+          key: plugin.id, style: { '--i': String(index) },
+        },
+          h(ExtensionCover, { plugin }), head, blurb, tagRow, actions,
+          /* 可更新的卡片多一行：最新一条更新说明 + soak 状态。一个「有更新」
+             徽标不解释为什么值得装，这一行解释。 */
+          plugin.updateAvailable === true
+            ? h('p', { className: 'ofm_soakline' }, [
+              (plugin.changelog ?? [])[0] ?? '',
+              (plugin.changelog ?? []).length > 0 ? ' · ' : '',
+              soakHint(plugin),
+            ].join('')) : null,
+          fields.length > 0 ? h('div', { className: 'ofm_sec', style: { gap: 4 } }, fields) : null,
+          controls)
+      }
+      return h('div', { className: 'ofm_page' },
+        h('header', { className: 'ofm_hero ofm_glass' },
+          h('div', { className: 'ofm_pagehead' },
+            h('div', { className: 'ofm_pagetitle' },
+              h('h2', null, t('ext.title')),
+              h('p', { className: 'ofm_pagesub' }, t('ext.sub'))),
+            h('div', { className: 'ofm_pills' },
+              h(Pill, { strong: true }, t('ext.count').replace('{n}', String(indexRows.length))),
+              h(Pill, null, t('ext.countByType').replace('{c}', String(channelCount)).replace('{e}', String(indexRows.length - channelCount))),
+              h(Button, {
+                disabled: busyId === '/extensions/registry/refresh', busy: busyId === '/extensions/registry/refresh',
+                onClick: () => act('/extensions/registry/refresh', undefined, false),
+              }, t('ext.refresh')))),
+          h('div', { className: 'ofm_seg', role: 'group', style: { alignSelf: 'flex-start' } },
+            [['discover', t('ext.tabDiscover')], ['installed', t('ext.tabInstalled')], ['security', t('ext.tabSecurity')]].map(([key, label]) =>
+              h('button', { key, type: 'button', 'aria-pressed': tab === key ? 'true' : 'false', onClick: () => setTab(key) }, label)))),
+        state.status === 'error' ? h('div', { className: 'ofm_callout ofm_error' }, h('div', null, h('b', null, t('ext.empty')), h('div', null, state.error))) : null,
+        tab === 'discover' ? h(Fragment, null,
+          h('div', { className: 'ofm_row ofm_exttoolbar' },
+            h('div', { className: 'ofm_extsearch' },
+              h('input', {
+                ref: searchRef, className: 'ofm_input', type: 'search', placeholder: t('ext.search'),
+                value: query, 'aria-keyshortcuts': '/', onChange: event => setQuery(event.target.value),
+              }),
+              h('kbd', { className: 'ofm_kbd', title: t('ext.searchHint'), 'aria-hidden': 'true' }, '/')),
+            h('div', { className: 'ofm_seg', role: 'group', 'aria-label': t('ext.type') },
+              [['all', t('ext.all'), indexRows.length], ['channel', t('ext.channel'), channelCount], ['enhancement', t('ext.enhancement'), indexRows.length - channelCount]].map(([key, label, count]) =>
+                h('button', { key, type: 'button', 'aria-pressed': typeFilter === key ? 'true' : 'false', onClick: () => setTypeFilter(key) },
+                  label, h('span', { className: 'ofm_segcount' }, String(count))))),
+            h('div', { className: 'ofm_seg', role: 'group', 'aria-label': t('ext.sort') },
+              [['curated', t('ext.sortCurated')], ['newest', t('ext.sortNewest')], ['name', t('ext.sortName')]].map(([key, label]) =>
+                h('button', { key, type: 'button', 'aria-pressed': sortKey === key ? 'true' : 'false', onClick: () => setSortKey(key) }, label)))),
+          h('div', { className: 'ofm_row ofm_exttoolbar' },
+            h('span', { className: 'ofm_inlinehint', title: t('ext.autoUpdateHint').replace('{h}', String(state.registryMeta?.soakHours ?? 2)) },
+              h(Switch, {
+                label: t('ext.autoUpdate'), checked: state.autoUpdate === true, disabled: autoUpdateBusy,
+                onChange: () => { void toggleAutoUpdate() },
+              })),
+            sourceLabel(state.registryMeta) !== ''
+              ? h('span', { className: 'ofm_extsource', title: `${t('ext.source')}: ${state.registryMeta?.source ?? ''}` },
+                `${t('ext.source')} · ${sourceLabel(state.registryMeta)}`) : null,
+            tagFilter !== '' ? h('span', { className: 'ofm_note' }, `${t('ext.filterTag')}:`) : null,
+            tagFilter !== '' ? h('span', { className: 'ofm_tag' }, tagFilter) : null,
+            tagFilter !== '' ? h(Button, { onClick: () => setTagFilter('') }, t('ext.clearSearch')) : null),
+          !registry && state.status === 'ready' ? h('div', { className: 'ofm_callout' },
+            h('div', null,
+              h('b', null, t('ext.empty')),
+              h('div', null, state.registryError !== undefined && state.registryError !== '' ? state.registryError : t('ext.indexHint')))) : null,
+          !registry && state.status === 'loading'
+            ? h('div', { className: 'ofm_grid ofm_extgrid' },
+              [0, 1, 2, 3, 4, 5].map(index => h('div', {
+                className: 'ofm_extskel', key: String(index), 'aria-hidden': 'true', style: { '--i': String(index) },
+              }, h('i', { style: { width: '42%' } }), h('i', { style: { width: '68%' } }),
+                h('i', { style: { width: '86%' } }), h('i', { style: { width: '55%' } }))))
+            : h('div', { className: 'ofm_grid ofm_extgrid' }, discover.map((plugin, index) => cardFor(plugin, index, true))),
+          discover.length === 0 && registry !== null && state.status === 'ready' ? h('div', { className: 'ofm_extempty' },
+            h('p', { className: 'ofm_note' }, t('ext.discoverEmpty')),
+            (query.trim() !== '' || typeFilter !== 'all' || tagFilter !== '')
+              ? h(Button, { onClick: () => { setQuery(''); setTypeFilter('all'); setTagFilter(''); searchRef.current?.focus?.() } }, t('ext.clearSearch'))
+              : h('a', { className: 'ofm_linkbtn', href: 'https://github.com/Ebony-Vinyl/ofm-extensions', target: '_blank', rel: 'noopener noreferrer' }, t('ext.openRepo'))) : null)
+        : tab === 'installed' ? h(Fragment, null,
+          h('div', { className: 'ofm_row ofm_exttoolbar' },
+            updates.length > 0 ? h('span', { className: 'ofm_badge region-blocked' }, t('ext.updateCount').replace('{n}', String(updates.length))) : null,
+            updates.length > 0 ? h(Button, { kind: 'primary', disabled: updatingAll, busy: updatingAll, onClick: updateAll },
+              updatingAll && updateProgress !== null
+                ? t('ext.updateProgress').replace('{i}', String(updateProgress.done)).replace('{n}', String(updateProgress.total))
+                : t('ext.updateAll')) : null,
+            h(Button, { onClick: exportShelf, disabled: installed.length === 0, title: t('ext.shelfTitle') }, t('ext.exportShelf')),
+            h('label', { className: 'ofm_importlabel', title: t('ext.shelfTitle') },
+              h('input', {
+                type: 'file', accept: 'application/json,.json', hidden: true,
+                onChange: event => { const file = event.target.files?.[0]; if (file !== undefined) void importShelf(file); event.target.value = '' },
+              }),
+              h(Button, { disabled: busyId !== '' }, t('ext.importShelf')))),
+          installed.length === 0 ? h('p', { className: 'ofm_note' }, t('ext.installedEmpty'))
+            : h('div', { className: 'ofm_grid ofm_extgrid' }, installedSorted.map((record, index) => cardFor({
+              ...record, summary: record.description,
+              tags: registryById.get(record.id)?.tags ?? [],
+              publishedAt: registryById.get(record.id)?.publishedAt ?? record.installedAt,
+              updateAvailable: registryById.get(record.id)?.updateAvailable === true,
+              changelog: registryById.get(record.id)?.changelog ?? [],
+              cover: registryById.get(record.id)?.cover,
+              installed: true,
+            }, index))),
+          installed.length > 0 ? h(Section, { title: t('ext.auditTitle') },
+            (state.audit ?? []).length > 0
+              ? h('div', { className: 'ofm_audrows' },
+                state.audit.slice().reverse().slice(0, 12).map((entry, index) => h('div', { className: 'ofm_audrow', key: `${entry.at}-${index}` },
+                  h('span', { className: 'ofm_audat' }, new Date(entry.at).toLocaleString(t.locale)),
+                  h('b', null, auditLabel(entry.action)),
+                  h('code', null, entry.id),
+                  entry.version !== undefined ? h('span', { className: 'ofm_note' }, `v${entry.version}`) : null,
+                  entry.enabled !== undefined ? h('span', { className: 'ofm_note' }, entry.enabled === true ? t('ext.enable') : t('ext.disable')) : null)))
+              : h('p', { className: 'ofm_note' }, t('ext.auditEmpty'))) : null)
+        : h('div', { className: 'ofm_panel' },
+          h('div', { className: 'ofm_paneltitle' }, t('ext.security')),
+          h('p', { className: 'ofm_note', style: { lineHeight: 1.7 } }, t('ext.securityBody')),
+          h('p', { className: 'ofm_note', style: { lineHeight: 1.7 } }, t('ext.securityBody2')),
+          typeof state.registry?.generatedAt === 'string' && state.registry.generatedAt !== ''
+            ? h('p', { className: 'ofm_note', style: { lineHeight: 1.7 } }, t('ext.indexFresh').replace('{at}', new Date(state.registry.generatedAt).toLocaleString(t.locale)))
+            : null,
+          h('div', { className: 'ofm_row' },
+            h('a', { className: 'ofm_linkbtn', href: `https://github.com/${'Ebony-Vinyl'}/ofm-extensions`, target: '_blank', rel: 'noopener noreferrer' }, t('ext.openRepo')))),
+        detail !== undefined ? h(ExtensionDetail, { t, detail, busy: busyId === detail.id, onInstall: installFromDetail, onClose: () => setDetail(undefined) }) : null)
+    }
+
+    /* A type-tinted letter avatar stands in for the manifest's (still optional)
+       icon: every card gets a face even when the author shipped none. */
+    function extensionAvatar(plugin) {
+      const initial = String(plugin?.name ?? plugin?.id ?? '?').trim().charAt(0).toUpperCase()
+      return h('span', {
+        className: `ofm_extavatar ${plugin?.type === 'channel' ? 'channel' : 'enhancement'}`,
+        'aria-hidden': 'true',
+      }, initial === '' ? '·' : initial)
+    }
+
+    /* The card's cover banner. The bytes ride the host's own /extensions/cover
+       route (digest-verified server-side, cached on disk); when the author
+       shipped none — or the fetch fails — the card simply renders without one.
+       The fallback state is per-card so one bad image never blanks the grid. */
+    function ExtensionCover({ plugin }) {
+      const [failed, setFailed] = useState(false)
+      if (plugin?.cover === null || plugin?.cover === undefined || failed) return null
+      return h('div', { className: 'ofm_extcover' },
+        h('img', {
+          src: `${API}/extensions/cover?id=${encodeURIComponent(plugin.id)}`,
+          alt: '', loading: 'lazy', decoding: 'async',
+          // 淡入：字节到位前不占住卡片顶部的视觉重量，一张慢图不撕开骨架。
+          onLoad: event => event.currentTarget.classList.add('ofm_loaded'),
+          onError: () => setFailed(true),
+        }))
+    }
+
+    /* The detail drawer portals to BODY, exactly like the disclaimer and
+       announcement modals: page containers are z-index:1 stacking contexts
+       while the nav card is z-index:30, so an inline fixed scrim would slide
+       under the nav card and get clipped in the desktop host. */
+    function ExtensionDetail({ t, detail, busy, onInstall, onClose }) {
+      const host = useMemo(() => {
+        const node = document.createElement('div')
+        node.setAttribute('data-ofm-extension-detail-root', 'true')
+        document.body.appendChild(node)
+        return node
+      }, [])
+      useEffect(() => () => { if (host.parentNode !== null) host.parentNode.removeChild(host) }, [host])
+      const dialogRef = useRef(null)
+      useEffect(() => {
+        dialogRef.current?.focus()
+        const onKey = event => { if (event.key === 'Escape') onClose() }
+        window.addEventListener('keydown', onKey)
+        return () => window.removeEventListener('keydown', onKey)
+      }, [onClose])
+      const origins = detail.permissions?.network ?? []
+      const modelCount = detail.models?.length ?? detail.modelCount
+      const repositoryHost = (() => {
+        try { return new URL(detail.repository).host } catch { return '' }
+      })()
+      const meta = [
+        [t('ext.type'), detail.type === 'channel' ? t('ext.channel') : t('ext.enhancement')],
+        [t('ext.license'), detail.license || '—'],
+        [t('ext.published'), String(detail.publishedAt ?? '').slice(0, 10) || '—'],
+        [t('ext.models'), typeof modelCount === 'number' && modelCount > 0 ? String(modelCount) : '—'],
+        ...(repositoryHost !== '' ? [[t('ext.repository'), repositoryHost]] : []),
+      ]
+      const canAcquire = (detail.installed !== true || detail.updateAvailable === true) && detail.installable !== false
+      return ReactDOM.createPortal(h('div', { className: 'ofm_scrim', onClick: onClose },
+        h('div', {
+          className: 'ofm_ann ofm_extdetail', role: 'dialog', 'aria-modal': 'true', 'aria-label': detail.name,
+          tabIndex: -1, ref: dialogRef, onClick: event => event.stopPropagation(),
+        },
+          h(ExtensionCover, { plugin: detail }),
+          h('div', { className: 'ofm_annhead ofm_exthead' },
+            extensionAvatar(detail),
+            h('div', { className: 'ofm_exttitle' },
+              h('h3', { className: 'ofm_anntitle' }, detail.name),
+              h('p', { className: 'ofm_annsub' }, `${detail.id} · v${detail.version} · ${detail.author || ''}`))),
+          h('div', { className: 'ofm_annbody' },
+            h('p', null, detail.summary || detail.description || ''),
+            (detail.tags ?? []).length > 0 ? h('div', { className: 'ofm_tags' }, detail.tags.map(tag => h('span', { className: 'ofm_tag', key: tag }, tag))) : null,
+            detail.replaces ? h('div', { className: 'ofm_tags' }, h('span', { className: 'ofm_replacetag' }, t('ext.replaces').replace('{name}', detail.replaces))) : null,
+            detail.installed !== true ? h('p', { className: 'ofm_note' }, t('ext.notInstalledHint')) : null,
+            detail.installable === false ? h('p', { className: 'ofm_note' }, t('ext.requiresHost').replace('{v}', detail.minHost ?? '')) : null,
+            (detail.hooks ?? []).length > 0 ? h('div', { className: 'ofm_row', style: { gap: 6, alignItems: 'center' } },
+              h('span', { className: 'ofm_note' }, t('ext.hooks')),
+              detail.hooks.map(hookName => h('code', { key: hookName }, hookName))) : null,
+            h('div', { className: 'ofm_kv' }, meta.map(([label, value]) => h('div', { className: 'ofm_kvc', key: label },
+              h('b', null, value), h('span', null, label)))),
+            /* 渠道插件的模型货架：装之前就知道它接进哪些模型，而不只是个数。 */
+            (detail.models ?? []).length > 0 ? h('div', { className: 'ofm_modelshelf' },
+              detail.models.slice(0, 14).map(model => h('span', {
+                className: 'ofm_modelchip', key: model.id, title: `${model.id}${model.wire ? ` · ${model.wire}` : ''}`,
+              }, model.name ?? model.id)),
+              detail.models.length > 14 ? h('span', { className: 'ofm_note' }, `+${detail.models.length - 14}`) : null) : null,
+            (detail.changelog ?? []).length > 0 ? h('div', { className: 'ofm_sec' },
+              h('b', { style: { fontSize: 12.5 } }, t('ext.changelog')),
+              h('ul', { className: 'ofm_changelog' }, detail.changelog.map((row, index) =>
+                h('li', { key: index }, row)))) : null,
+            h('div', { className: 'ofm_sec' },
+              h('b', { style: { fontSize: 12.5 } }, t('ext.permissions')),
+              h('p', { className: 'ofm_note' }, t('ext.permNetwork').replace('{n}', String(origins.length))),
+              origins.length > 0
+                ? h('div', { className: 'ofm_extorigins' }, origins.map(origin => h('code', { key: origin }, origin)))
+                : h('p', { className: 'ofm_note' }, t('ext.originEmpty')),
+              h('p', { className: 'ofm_note' }, t('ext.permSecrets').replace('{n}', String(detail.permissions?.secrets?.length ?? 0))),
+              h('p', { className: 'ofm_note' }, `${t('ext.storage')}: ${detail.permissions?.storage === true ? t('ext.storageOn') : t('ext.storageOff')}`))),
+          h('div', { className: 'ofm_annfoot' },
+            detail.installed === true && detail.updateAvailable !== true ? h('span', { className: 'ofm_badge available' }, t('ext.installed')) : null,
+            h('span', { className: 'spacer' }),
+            typeof detail.sourceUrl === 'string' && detail.sourceUrl !== '' ? h('a', { className: 'ofm_linkbtn', href: detail.sourceUrl, target: '_blank', rel: 'noopener noreferrer' }, t('ext.viewSource')) : null,
+            detail.homepage ? h('a', { className: 'ofm_linkbtn', href: detail.homepage, target: '_blank', rel: 'noopener noreferrer' }, t('ext.openHomepage')) : null,
+            detail.repository && detail.repository !== detail.homepage ? h('a', { className: 'ofm_linkbtn', href: detail.repository, target: '_blank', rel: 'noopener noreferrer' }, t('ext.openRepository')) : null,
+            canAcquire ? h(Button, {
+              kind: 'primary', disabled: busy === true, busy: busy === true,
+              onClick: () => onInstall?.(detail.id),
+            }, busy === true ? t('ext.installing') : detail.installed === true ? t('ext.update') : t('ext.install')) : null,
+            h(Button, { onClick: onClose }, t('ext.close'))))), host)
     }
 
     function EacPage(props) {
@@ -7498,6 +8918,36 @@ window.__ModuleLoader__.load({
       } catch { return 'en' }
     }
 
+    /**
+     * Decide whether this page announces the last hot reload.
+     *
+     * The server acknowledgement is authoritative because it survives a new
+     * origin: another port, another hostname, or the desktop shell's random
+     * port all have an empty localStorage. The cache only suppresses a repeat
+     * toast in the same origin; an unconfirmed server acknowledgement must
+     * still be retried if its previous write failed or has not landed yet.
+     */
+    function reloadNoticePlan(meta, cached) {
+      const at = Number(meta?.reloadedAt ?? 0)
+      if (!Number.isFinite(at) || at <= 0) return { at: 0, show: false }
+      const seen = Number(meta?.reloadNoticeSeen ?? 0)
+      if (seen === at) return { at, show: false }
+      if (cached !== undefined && cached !== null && String(at) === String(cached)) return { at, show: false }
+      return { at, show: true }
+    }
+
+    /** Show the toast at most once, and retry any missing server acknowledgement. */
+    async function announceReloadNotice(meta, cached, { show, ack, remember }) {
+      const plan = reloadNoticePlan(meta, cached)
+      if (plan.at <= 0) return { ...plan, shown: false }
+      remember(plan.at)
+      if (plan.show) show(plan)
+      if (Number(meta?.reloadNoticeSeen ?? 0) !== plan.at) {
+        try { await ack(plan.at) } catch { /* retry on the next check without repeating the toast */ }
+      }
+      return { ...plan, shown: plan.show }
+    }
+
     function apply(ctx) {
       const t = ctx.locale.bind(NS)
       ctx.effect(() => ctx.locale.register(NS, { zh: DICT.zh, en: DICT.en }), 'our-free-model: dictionaries')
@@ -7554,10 +9004,14 @@ window.__ModuleLoader__.load({
             for (const item of data.items ?? []) {
               osNotify(t('toast.annTitle'), item.title)
               if (item.level === 'urgent') {
+                if (urgentShownIds.has(item.id)) continue
+                urgentShownIds.add(item.id)
                 showUrgentModal({
                   title: `${t('news.urgentTitle')} · ${item.title}`,
                   html: item.html ?? '',
                   confirmLabel: t('news.gotIt'),
+                  holdMs: (item.holdSeconds ?? 0) * 1000,
+                  holdHint: t('news.holdHint'),
                   onClose: () => { void post('/announcements/ack', { id: item.id }).catch(() => {}) },
                 })
               } else {
@@ -7588,6 +9042,26 @@ window.__ModuleLoader__.load({
             window.dispatchEvent(new CustomEvent('ofm:hello', { detail: data }))
           })
         }
+        // 升级场景：公告在页面关闭期间到达（插件重启后的首轮轮询），到达推送
+        // 没有任何观看者。打开流之前补一次已读检查——最新一条未确认的 urgent
+        // 照样弹层，关闭即 ack。显示过的一律不重复（本次页面生命周期内）。
+        void (async () => {
+          try {
+            const view = await api('/announcements')
+            const candidates = (view?.items ?? []).filter(item => item.level === 'urgent' && item.acked !== true && urgentShownIds.has(item.id) === false)
+            const item = candidates.sort((left, right) => Number(right.createdAt ?? 0) - Number(left.createdAt ?? 0))[0]
+            if (item === undefined || disposed === true) return
+            urgentShownIds.add(item.id)
+            showUrgentModal({
+              title: `${t('news.urgentTitle')} · ${item.title}`,
+              html: item.html ?? '',
+              confirmLabel: t('news.gotIt'),
+              holdMs: (item.holdSeconds ?? 0) * 1000,
+              holdHint: t('news.holdHint'),
+              onClose: () => { void post('/announcements/ack', { id: item.id }).catch(() => {}) },
+            })
+          } catch { /* the modal is best effort; the center still lists it */ }
+        })()
         open()
         return () => {
           disposed = true
@@ -7597,23 +9071,23 @@ window.__ModuleLoader__.load({
       }, 'our-free-model: push subscription')
 
       // A hot reload or in-app upgrade swaps this bundle while the page stays
-      // open. The only durable marker across that swap is localStorage, so the
-      // successor announces what happened exactly once.
+      // open. The server records the acknowledgement, so the successor
+      // announces what happened exactly once across every origin.
       ctx.effect(() => {
         void (async () => {
           try {
             const meta = await api('/meta')
-            const at = Number(meta?.reloadedAt ?? 0)
-            if (at <= 0) return
-            let seen = ''
-            try { seen = window.localStorage?.getItem('ofm.reloadedAt') ?? '' } catch { /* storage unavailable */ }
-            if (String(at) === seen) return
-            try { window.localStorage?.setItem('ofm.reloadedAt', String(at)) } catch { /* ignore */ }
-            showToast({
-              title: meta.version !== '' ? `Our Free Model ${meta.version}` : 'Our Free Model',
-              body: t('reload.done').replace('{n}', String(meta.reloadCount ?? 0)),
-              actions: [{ label: t('reload.refresh'), onClick: () => { try { window.location.reload() } catch { /* top-level navigation refused */ } } }],
-              holdMs: 12000,
+            let cached = ''
+            try { cached = window.localStorage?.getItem('ofm.reloadedAt') ?? '' } catch { /* storage unavailable */ }
+            await announceReloadNotice(meta, cached, {
+              show: () => showToast({
+                title: meta.version !== '' ? `Our Free Model ${meta.version}` : 'Our Free Model',
+                body: t('reload.done').replace('{n}', String(meta.reloadCount ?? 0)),
+                actions: [{ label: t('reload.refresh'), onClick: () => { try { window.location.reload() } catch { /* top-level navigation refused */ } } }],
+                holdMs: 12000,
+              }),
+              ack: at => post('/reload-notice/ack', { at }),
+              remember: at => { try { window.localStorage?.setItem('ofm.reloadedAt', String(at)) } catch { /* ignore */ } },
             })
           } catch { /* backend absent */ }
         })()
@@ -7675,7 +9149,7 @@ window.__ModuleLoader__.load({
     exports.inject = inject
     exports.name = 'our-free-model'
     // Headless test seams use the same stub React as scripts/client-lint.mjs.
-    exports.__test = { parseSafeHtml, safeUrl, sanitizeStyle, htmlToDom, buildHeatCells, Heatmap, ChannelsPage, UpgradePanel, useEacLogin, EacAuth, PicksPage, RecoCard, DICT, useChannelRpc, Shell, SubscriptionsPage, Disclaimer, CSS }
+    exports.__test = { parseSafeHtml, safeUrl, sanitizeStyle, htmlToDom, buildHeatCells, Heatmap, ChannelsPage, UpgradePanel, useEacLogin, EacAuth, PicksPage, RecoCard, FeedbackPage, DICT, useChannelRpc, Shell, SubscriptionsPage, Disclaimer, CSS, reloadNoticePlan, announceReloadNotice }
     return module.exports
   },
 })

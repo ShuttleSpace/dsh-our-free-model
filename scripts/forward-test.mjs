@@ -641,18 +641,21 @@ check('the adapter conversion keeps every caller tool', () => {
   assert.equal(declared.length, callerTools.length)
 })
 
-check('a non-empty caller list is renamed opaquely and gains the official set', () => {
+check('a caller list binds what it can and renames the rest; the official set completes', () => {
   const body = { tools: toToolDefs([normalizeTool(openAiTool('pwsh')), normalizeTool(openAiTool('glob'))], 'chat') }
   applyFingerprint(body, false)
-  // The reference shaping (o2a) renames every client tool to an opaque wire
-  // name and appends the full official set — the vocabulary gate refuses a
-  // body that still reads as another client's session.
+  // v1.4.7 BindOfficial: `glob` folds onto the official spelling with the
+  // caller's own definition; `pwsh` has no official and takes the opaque
+  // rename; the remaining officials are appended exactly once.
   const names = body.tools.map(tool => tool.function.name)
   const clientWires = names.filter(name => name.startsWith(CLIENT_TOOL_PREFIX))
-  assert.deepEqual(clientWires, [clientToolWireName('pwsh'), clientToolWireName('glob')])
-  assert.deepEqual(names.filter(name => !name.startsWith(CLIENT_TOOL_PREFIX)), V2_OFFICIAL_TOOL_ORDER)
+  assert.deepEqual(clientWires, [clientToolWireName('pwsh')])
+  const bound = body.tools.find(tool => tool.function.name === 'glob')
+  assert.equal(bound.function.description, 'glob tool')
+  const officials = names.filter(name => !name.startsWith(CLIENT_TOOL_PREFIX))
+  assert.deepEqual(officials.filter(name => name !== 'glob'), V2_OFFICIAL_TOOL_ORDER.filter(name => name !== 'glob'))
+  assert.equal(officials.filter(name => name === 'glob').length, 1)
   assert.equal(String(body.tools[0].function.description).includes('unavailable'), false)
-  assert.equal(String(body.tools[1].function.description).includes('unavailable'), false)
   assert.equal(body.tool_choice, undefined)
 })
 
@@ -664,10 +667,12 @@ check('an empty caller list still gets the official set, and no tool_choice', ()
   assert.equal(body.tool_choice, undefined)
 })
 
-await checkAsync('a caller tool reusing a gate name is mapped back to the caller name', async () => {
+await checkAsync('a caller tool reusing a gate name binds and maps back', async () => {
   const body = { tools: toToolDefs([normalizeTool(openAiTool('read'))], 'chat') }
   const map = applyFingerprint(body, false)
-  assert.equal(map.get(clientToolWireName('read')), 'read')
+  assert.equal(body.tools.filter(tool => tool.function.name === 'read').length, 1)
+  assert.equal(body.tools.find(tool => tool.function.name === 'read').function.description, 'read tool')
+  assert.equal(map.get('read'), undefined)
 })
 
 await checkAsync('the lane receives the caller tools the client sent', async () => {
@@ -829,7 +834,12 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 await checkAsync('a silent stream is kept alive with SSE comment frames', async () => {
   const res = fakeResponse()
   const stop = startHeartbeat(res, 5)
-  await sleep(60)
+  // Wait for the frames rather than for a fixed slice of wall time: a 5 ms
+  // interval against a 60 ms sleep assumes the timer never gets starved, and on
+  // a loaded box it does — the assertion then reports one frame and the suite
+  // flakes. Polling keeps the requirement (repeated frames) without timing it.
+  const deadline = Date.now() + 2000
+  while (res.writes.length < 2 && Date.now() < deadline) await sleep(5)
   assert.ok(res.writes.length >= 2, `expected repeated comment frames, got ${res.writes.length}`)
   assert.ok(res.writes.every(chunk => chunk === ': ping\n\n'), 'only comment frames may go out')
   stop()

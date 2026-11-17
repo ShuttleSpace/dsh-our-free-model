@@ -40,11 +40,11 @@
 ## Community
 
 <div align="center">
-  <img src="docs/images/qq-group-386179533.png" alt="QR code for ai技术交流学习群 (QQ group: 386179533)" width="300">
+  <img src="docs/images/qq-group-1132377727.png" alt="QR code for OFM技术交流[18群] (QQ group: 1132377727)" width="300">
   <br>
-  <b>QQ group: 386179533 (ai技术交流学习群)</b>
+  <b>QQ group: 1132377727 (OFM技术交流[18群])</b>
   <br>
-  Scan the QR code or search for the group number to join, discuss the plugin, report issues and share tips.
+  Scan the QR code to join, discuss the plugin, report issues and share tips.
 </div>
 
 ---
@@ -70,7 +70,9 @@
 - **Token savers** — three things: tool-output compaction (RTK) rewrites `tool_result` content in place before the request is sent (git diff / status / log, grep, find, ls, tree, build logs, numbered file dumps, search listings, duplicate log lines) — measured live, a 40 KB `git diff` lost 90% of its bytes and the model still answered about it; prompt shaping offers the caveman and ponytail families, every level off by default; and five local answers that never call a provider. The settings page reports bytes before/after, percent saved, blocks compacted and calls measured, from the same stats rows the usage charts read.
 - **Routing (fallback chains)** — chain models from any lane into one named chain that appears in the picker and on the gateway as the virtual model `combo:<name>`. `fallback` always starts at the head; `round-robin` rotates the starting point and stays there for N turns. A link that fails *before any answer delta* is discarded whole, so the switch is invisible to the caller — and reasoning deltas deliberately do not count as content, so "thought for a minute, then hit a quota wall" is the case failover exists for.
 - **The local gateway speaks Anthropic natively** — new `POST /v1/messages` (streaming and non-streaming, with `thinking`/`tool_use` blocks, a real `stop_reason` and an in-stream `error` event when a turn fails after the headers went out) and `POST /v1/messages/count_tokens` (a local estimate — the plugin ships no tokenizer); `/v1/models` now advertises every lane, the aggregate rows and the chains included. The gateway page's new *Connect a client* section generates copy-ready recipes — Claude Code, Codex `config.toml`, the OpenAI and Anthropic SDKs, curl, and a LAN variant when the relay is up — from the port that actually bound and the key that is actually required.
-- **Optional visual effects** — The settings header has a Visual effects switch, off by default. The aquarium and model features stay available; enabling it restores background glows, glass blur and decorative motion. The preference stays in the current browser.
+- **OFM Plugin Center: one market for channels, enhancements and pages** — the repository [Ebony-Vinyl/ofm-extensions](https://github.com/Ebony-Vinyl/ofm-extensions) hosts community plugins: an Ed25519-signed index, installs verify the SHA-256 and run a static scan, and code runs inside a Worker VM sandbox (the only import is the controlled `ofm:sdk`; the network is limited to the domains the manifest declares, secrets go in and never come out, every hook has a timeout breaker). A channel plugin's models appear in the picker as soon as it is installed (`replaces` can take a built-in lane over), enhancements hook `onRequest`/`onModels`/`onUsage`, and a page plugin adds one sandboxed iframe page to the sidebar whose only door to the host is the controlled message bridge. Manifests v1 and v2 are both accepted; the built-in channel pack, aggregate directory, client launcher, library formats and model workspace register through the same center as essential, non-removable descriptors. Discover, install, update, enable, configure, secrets, self-test and uninstall all live in the console's Plugin Center; developer mode installs unsigned local packages behind an explicit acknowledgement, an unverified badge and the same sandbox. The market page adds cover banners, type color bands and skeleton loaders, and the detail drawer carries a direct link to the signed source, release notes (changelog) and the permission list; the host refreshes the index on a background cadence, and the installed shelf exports / imports as JSON (never including secrets) for migration. Model-workspace (magpie) lane inference is wired into the same enhancement hook chain (onRequest) and, by default, leaves through the host's replaceable fetch, so local proxy plugins (context extenders and friends) can see it again; OFM_ENGINE_PRIVATE_FETCH=1 returns to the private direct transport.
+- **The free lane's quota breaker and exit proxy (the full answer to issues #708/#767)** — the upstream counts free usage per egress IP; one real 429 opens the breaker (a 6-hour default window when `Retry-After` is absent), and while it is open the plugin refuses turns locally instead of feeding the wall. `FreeTierError` locks the lane separately. Every manual test is kept (listing refresh, single-model check, speed test) and automatic probing stays off — availability is learned passively from real traffic. The lane accepts its own exit proxy (http/https/socks5) and the `HTTP_PROXY`/`HTTPS_PROXY`/`NO_PROXY` environment; "retry after changing the exit" clears the window once, and "test the exit" pings a third-party echo that spends no quota. Request shape matches the official 2.2.3 client (`traceparent`/`b3`/wildcard `accept`), and opencode2api v1.4.7's tool-name binding, ghost-call cleanup and title-request bypass are ported.
+- **Thirteen pages of glass** —
 - **Eleven tabs beside the old six** — Aggregate, Token savers, Routing, Plugin upgrade and Recommended projects join Free models, EAC models, Free channels, Dashboard, Request log and Gateway; the motion pass (card rise on mount, page fade on tab switch, an animated savings meter, hover lifts) respects `prefers-reduced-motion` and collapses to one column at panel width. The Recommended-projects page carries the three companion repositories — EAC-Desktop, EAC-Pack and EAC-design-world — with a description, a direct link and a star button each, and their live star, fork and last-push numbers read from GitHub (absent, never invented, when GitHub cannot be reached).
 - **Clean names in the UI** — no mojibake, no upstream vendor strings leaking into your model picker.
 
@@ -115,7 +117,7 @@ the picker by itself as soon as a probe gets through.
 > If you prefer npm:
 >
 > ```
-> dsh plugin --profile web add @ebony-vinyl/dsh-our-free-model@2.8.0
+> dsh plugin --profile web add @ebony-vinyl/dsh-our-free-model@2.8.5
 > ```
 >
 > Its bundle id carries the scope (`@ebony-vinyl/dsh-our-free-model`), so it cannot
@@ -148,12 +150,12 @@ and installation contract rather than assuming every desktop shell shares this g
 To install manually as a real directory, use a trusted local tarball:
 
 1. Create `<DSH_HOME>/profiles/<profile>/vendor/`. From the reviewed repository, run `npm pack --ignore-scripts --pack-destination "<DSH_HOME>/profiles/<profile>/vendor"`, or place an official same-version release tarball from this repository there. Local packing does not publish to npm.
-2. Add `"dsh-our-free-model": "file:./vendor/dsh-our-free-model-2.8.0.tgz"` to the profile's `package.json` dependencies, then use the host's installation flow to resolve it. Keep the filename version aligned with this repository's `package.json`; do not substitute a same-named npm registry version.
+2. Add `"dsh-our-free-model": "file:./vendor/dsh-our-free-model-2.8.5.tgz"` to the profile's `package.json` dependencies, then use the host's installation flow to resolve it. Keep the filename version aligned with this repository's `package.json`; do not substitute a same-named npm registry version.
 3. Append `"dsh-our-free-model"` to `dsh.profile.bundles`.
 
 When the package manager owns the installed bytes, set `distribution: 'managed'` in the bundle config or plugin `settings.json`. The package manager then handles updates; in-app upgrades, announcement polling and hot reload stand down while model access remains available. For later updates, replace the trusted tarball and update its dependency path so the old lockfile cannot restore an older copy.
 
-If copying release files manually, copy the entire package, including `adapter/`, `src/`, `locale/`, `vendor/magpie/` metadata and licenses, and `vendor/channel-pack/`'s `pack.js`, WASM, LICENSE and NOTICE. Copying only entry scripts leaves channel loading incomplete.
+If copying release files manually, copy the entire package, including `adapter/`, `src/`, `locale/`, the engine resource directory under `vendor/` (`engine.json`, LICENSE, NOTICE and the platform binary), and `vendor/channel-pack/`'s `pack.js`, WASM, LICENSE and NOTICE. Copying only entry scripts leaves channel loading incomplete.
 
 > Do **not** also add an entry to `cordis.patch.yml`. A bundle referenced from
 > `dsh.profile.bundles` already applies its own patch layer, and registering it
@@ -867,3 +869,13 @@ MIT — see [LICENSE](LICENSE).
 This project is an independent plugin and is not affiliated with, endorsed by, or
 sponsored by any model provider. Using it to reach free tiers is subject to those
 providers' own terms; check them before deploying anywhere beyond your own machine.
+
+## Thanks
+
+Thanks to [Jet (iJetLi)](https://gitee.com/iJetLi) for the channel pack
+(`vendor/channel-pack/`, MIT) — the login flows, account pools and local gateway
+for all ten built-in account channels come from it; its LICENSE and NOTICE.md
+sit in that directory — and to
+[opencode2api](https://github.com/jasonxu114514/opencode2api) (`src/o2a/`,
+GPL-3.0), whose free-tier request shaping this plugin ports (the file-by-file
+map is `src/o2a/SYNC.md`).
