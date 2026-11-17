@@ -122,6 +122,19 @@ Magpie 的插件 `options` 通过 `managed` 传入：
 测试、`.git` 以及 65 MB 的引擎二进制（`magpie` 字段默认关闭引擎，引擎按需在
 运行时下载）。Zip 自写、纯 Node、无第三方依赖。
 
+**Magpie 实际加载的插件是本仓库的独立分发仓库**
+[`ShuttleSpace/magpie-our-free-model`](https://github.com/ShuttleSpace/magpie-our-free-model)
+（`main`，`package.json` 的 `exports["./server"]`）；用户按
+`magpie plugin add github:ShuttleSpace/magpie-our-free-model` 安装的就是它。
+发布时：在本仓库 `magpie` 分支运行 `npm run pack:magpie`，把 zip 作为
+`ShuttleSpace/dsh-our-free-model` 的 Release 附件；再把 zip 内容同步到分发仓库，
+其中 `magpie/*.mjs` 落到根目录，`packages/`、`src/`、`vendor/` 原样落到根目录，
+保留分发仓库自己的 `package.json`（仓库名/说明/exports，只升 `version`）。
+因为宿主适配代码从 `magpie/` 上移到根目录，同步后必须把根目录 `.mjs` 里的
+`../` 引用改回 `./`（`runner.mjs`、`models.mjs`、`managed.mjs`、
+`installation-state.mjs`），然后运行分发仓库的 `npm test`，提交并推送 `main`。
+每次更新插件都要同时更新这个分发仓库，仅推本仓库 `magpie` 分支不会让 Magpie 更新。
+
 ## 同步上游
 
 ```sh
